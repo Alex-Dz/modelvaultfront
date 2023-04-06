@@ -10,7 +10,7 @@
         </section>
         <section id="user">
             <a id="logIn" href="#">Log In</a>
-            <a id="signUp" href="#">Sign Up</a>
+            <a id="signUp" href="/registro">Sign Up</a>
         </section>
     </nav>
 </template>
