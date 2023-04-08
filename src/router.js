@@ -1,22 +1,19 @@
-import Vue from 'vue';
-import Router from 'vue-router';
-import Home from './views/HomeView'
-import SignUp from './views/SignUp'
+/*import Vue from 'vue';*/
+import { createRouter, createWebHistory } from "vue-router";
+import HomeView from "./views/HomeView";
+/*import HomeComponent from "./components/HomeComponent";*/
+import SignUp from "./views/SignUp";
 
-Vue.use(Router);
-
-export default new Router({
-    mode: 'history',
+export default createRouter({
+    history: createWebHistory(),
     base: process.env.BASE_URL,
     routes: [
         {
             path: "/",
-            name: "home",
-            component: Home
+            component: HomeView
         },
         {
             path: "/registro",
-            name: "signup",
             component: SignUp
         }
     ]

@@ -1,16 +1,10 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+/*import Vue from 'vue';*/
+import { createStore } from 'vuex';
 
-Vue.use(Vuex);
-
-export default new Vuex.Store({
-  state: {
-    backURL: 'http://localhost:8080'
-  },
-  mutations: {
-
-  },
-  actions: {
-
+export const store =  createStore({
+  state () {
+    return {
+      backURL: 'http://localhost:8080'
+    }
   }
 })

@@ -1,4 +1,4 @@
-const tokenKey = 'Bearer ';
+const tokenKey = 'Bearer';
 
 export function getAuthenticationToken(){
     return localStorage.getItem( tokenKey );
