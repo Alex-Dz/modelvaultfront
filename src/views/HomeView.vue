@@ -1,8 +1,8 @@
 <template>
     <div class="container">
         <div class="row">
-        <HomeComponent/>
-          <router-view></router-view>
+            <HomeComponent/>
+            <router-view></router-view>
         </div>
     </div>
 </template>
@@ -16,8 +16,8 @@ export default{
     components: { HomeComponent },
     beforeCreate( ){
         if( !getAuthenticationToken( ) ) {
-            /*this.$router.push( {name: 'login'} )*/
-            console.log('need to login');
+            /*this.$router.push( {name: 'LoginView'} )*/
+            console.log('need to login: redirect to login');
         }
     }
 }
