@@ -1,7 +1,7 @@
 <template>
     <nav>
         <section id="menu">
-            <a href="#"><img class="logo" src="../assets/modelVLogo.png" alt="Model Vault"></a>
+            <a href="/"><img class="logo" src="<%= BASE_URL %>assets/modelVLogo.png" alt="Model Vault"></a>
             <ul>
                 <li><a href="#">Categories</a></li>
                 <li><a href="#">My Proyects</a></li>
@@ -17,7 +17,7 @@
 
 <script>
     export default {
-        nameItem: 'nav',
+        nameItem: 'Nav',
     };
 </script>
 

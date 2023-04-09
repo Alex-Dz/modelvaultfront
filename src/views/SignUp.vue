@@ -1,44 +1,34 @@
 <template>
-    <Nav/>
-    <SingUp class="signUp">
-        <section class="formulario">
-            <form action="submit">
-                <h3>Sé Nuestra Comunidad</h3>
-                <div>
-                    <input type="text" id="username" placeholder="Nombre de Usuario" v-model="username" required> 
-                </div>
-                <div>
-                    <input type="password" id="password" placeholder="Contraseña" v-model="password" required> 
-                </div>    
-                <div>
-                    <input type="password" id="repeatPassword" placeholder="Repetir Contraseña" v-model="repeatPassword" required> 
-                </div>
-                <div>
-                    <input type="text" id="name" placeholder="Nombre" v-model="name"> 
-                </div>
-                <div>
-                    <input type="email" id="email" placeholder="E-mail" v-model="email" required> 
-                </div>
-            </form>
-    
+    <section class="formulario">
+        <form @submit="signUpMethod" >
+            <h3>Sé Nuestra Comunidad</h3>
+            <div>
+                <input type="text" id="username" placeholder="Nombre de Usuario" v-model="username" required>
+            </div>
+            <div>
+                <input type="password" id="password" placeholder="Contraseña" v-model="password" required>
+            </div>
+            <div>
+                <input type="password" id="repeatPassword" placeholder="Repetir Contraseña" v-model="repeatPassword" required>
+            </div>
+            <div>
+                <input type="text" id="name" placeholder="Nombre" v-model="name">
+            </div>
+            <div>
+                <input type="email" id="email" placeholder="E-mail" v-model="email" required>
+            </div>
             <button type="submit">Registrarse</button>
-        </section>
-        
-    </SingUp>
+        </form>
+    </section>
 </template>
 
 <script>
-    import axios from 'axios' 
+import axios from 'axios'
 
-import Nav from '@/components/NavComponent.vue'
-
-const path = '/registro';
+const requestPath = '/api/sign-up';
 
 export default {
-    components:{
-        Nav
-    },
-    nameItem: 'SignUp',
+    name: 'SignUp',
     data(){
         return{
             username: '',
@@ -49,12 +39,13 @@ export default {
         }
     },
     methods:{
-        signUp( event ){
+        signUpMethod( event ){
             if( this.password !== this.repeatPassword){
+                console.log('passwords not match');
                 event.preventDefault();
                 return;
             }
-            axios.post( this.$store.state.backURL + path,
+            axios.post(this.$store.state.backURL + requestPath,
             {
                 username: this.username.trim(),
                 password: this.password.trim(),
@@ -68,6 +59,7 @@ export default {
                     alert("Usuario registrado exitosamente")
                 }
             }).catch( error => {
+                console.log(error);
                 if( error.response.status === 400){
                     alert(error)
                 }else{
