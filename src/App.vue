@@ -1,14 +1,14 @@
 <template>
-  <SignUp/>
-  
+  <Nav/>
+  <router-view/>
 </template>
 
 <script>
-  import SignUp from './views/SignUp.vue'
+  import Nav from './components/NavComponent.vue'
   export default {
-    nameItem: "singUp",
+    nameItem: "App",
     components: {
-      SignUp
+      Nav
     }
   }
 

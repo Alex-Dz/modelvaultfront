@@ -8,9 +8,9 @@
 </template>
 
 <script>
-    export default {
-            nameItem: 'home'
-        };
+export default {
+    name: 'HomeComponent'
+}
 </script>
     
 <style>

@@ -1,23 +1,25 @@
 <template>
-    <Nav />
-    <Home />
+    <div class="container">
+        <div class="row">
+            <HomeComponent/>
+            <router-view></router-view>
+        </div>
+    </div>
 </template>
 
 <script>
+import {getAuthenticationToken} from '@/dataStorage';
+import HomeComponent from '../components/HomeComponent.vue'
 
-/*
-    Es el componente que va a reurnir todos los demás componentes de nuestro proyecto
-*/
-
-import Nav from './components/NavComponent.vue'
-import Home from './components/HomeComponent.vue'
-
-export default {
-name: 'App',
-components: {
-    Nav,
-    Home,
-}
+export default{
+    name: "HomeView",
+    components: { HomeComponent },
+    beforeCreate( ){
+        if( !getAuthenticationToken( ) ) {
+            /*this.$router.push( {name: 'LoginView'} )*/
+            console.log('need to login: redirect to login');
+        }
+    }
 }
 </script>
 

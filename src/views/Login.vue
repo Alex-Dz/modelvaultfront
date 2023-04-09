@@ -1,62 +1,54 @@
 <template>
     <section class="formulario">
-        <form @submit="signUpMethod" >
-            <h3>Sé Nuestra Comunidad</h3>
+        <form @submit="loginMethod" >
+            <h3>Nos alegra verte por aquí de nuevo</h3>
             <div>
                 <input type="text" id="username" placeholder="Nombre de Usuario" v-model="username" required>
             </div>
             <div>
                 <input type="password" id="password" placeholder="Contraseña" v-model="password" required>
             </div>
-            <div>
-                <input type="password" id="repeatPassword" placeholder="Repetir Contraseña" v-model="repeatPassword" required>
-            </div>
-            <div>
-                <input type="text" id="name" placeholder="Nombre" v-model="name">
-            </div>
-            <div>
-                <input type="email" id="email" placeholder="E-mail" v-model="email" required>
-            </div>
-            <button type="submit">Registrarse</button>
+            <button type="submit">Iniciar Sesión</button>
         </form>
     </section>
 </template>
 
 <script>
-import axios from 'axios'
+import axios from 'axios';
+import {setAuthenticationToken} from '@/dataStorage';
+import {setAuthenticationBearer} from '@/dataStorage';
+import {setAuthenticatedUsername} from '@/dataStorage';
+import {setAuthenticatedName} from '@/dataStorage';
+/*import {getAuthenticationToken} from '@/dataStorage';*/
 
-const requestPath = '/api/sign-up';
+const requestPath = '/api/login';
 
 export default {
-    name: 'SignUp',
+    name: 'LoginView',
     data(){
         return{
             username: '',
-            password: '',
-            repeatPassword: '',
-            name: '',
-            email: ''
+            password: ''
         }
     },
     methods:{
-        signUpMethod( event ){
-            if( this.password !== this.repeatPassword){
-                console.log('passwords not match');
-                event.preventDefault();
-                return;
-            }
+        loginMethod( event ){
             axios.post(this.$store.state.backURL + requestPath,
             {
                 username: this.username.trim(),
-                password: this.password.trim(),
-                repeatPassword: this.repeatPassword.trim(),
-                name: this.name.trim(),
-                email: this.email.trim()
+                password: this.password.trim()
             }).then( response => {
-                if(response.status !== 201){
-                    alert("Error de servidor")
+                if(response.status !== 202){
+                    alert("Error de servidor");
                 }else{
-                    alert("Usuario registrado exitosamente")
+                    /*console.log(response);*/
+                    setAuthenticationToken(response.data.token);
+                    setAuthenticationBearer(response.data.bearer);
+                    setAuthenticatedUsername(response.data.username);
+                    setAuthenticatedName(response.data.name);
+                    /*alert("Usuario registrado exitosamente");*/
+                    /*console.log(getAuthenticationToken());*/
+                    this.$router.push( {name: 'HomeView'} );
                 }
             }).catch( error => {
                 console.log(error);

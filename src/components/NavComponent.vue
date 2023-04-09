@@ -1,7 +1,7 @@
 <template>
     <nav>
         <section id="menu">
-            <a href="#"><img class="logo" src="../assets/modelVLogo.png" alt="Model Vault"></a>
+            <a href="/"><img class="logo" src="../assets/modelVLogo.png" alt="Model Vault"></a>
             <ul>
                 <li><a href="#">Categories</a></li>
                 <li><a href="#">My Proyects</a></li>
@@ -9,16 +9,27 @@
             </ul>
         </section>
         <section id="user">
-            <a id="logIn" href="#">Log In</a>
+        <div v-if="isUserInSession">
+            <a id="username" href="#">{{username}}</a>
+        </div>
+        <div v-if="!isUserInSession">
+            <a id="logIn" href="/iniciar-sesion">Log In</a>
             <a id="signUp" href="/registro">Sign Up</a>
+        </div>
         </section>
     </nav>
 </template>
 
 <script>
-    export default {
-        nameItem: 'nav',
-    };
+import {getAuthenticatedUsername} from '@/dataStorage';
+
+export default {
+    nameItem: 'Nav',
+    data: () => ({
+        isUserInSession: getAuthenticatedUsername() != null ? true : false,
+        username: getAuthenticatedUsername()
+    })
+};
 </script>
 
 <style scoped>
@@ -79,6 +90,13 @@
     #signUp{
         background-color: #9F19FF;
         padding: 1rem;
+        border-radius: 10px;
+    }
+
+    #logout{
+        background-color: white;
+        padding: 1rem;
+        margin: 1rem;
         border-radius: 10px;
     }
 
