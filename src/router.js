@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "./views/HomeView";
 import SignUp from "./views/SignUp";
 import Login from './views/Login';
+import Projects from './views/Projects';
 
 export default createRouter({
     history: createWebHistory(),
@@ -22,6 +23,11 @@ export default createRouter({
             path: "/iniciar-sesion",
             name: 'LoginView',
             component: Login
+        },
+        {
+            path: "/proyectos", 
+            name: 'ProjectsView',
+            component: Projects
         }
     ]
 })

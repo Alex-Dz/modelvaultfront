@@ -4,7 +4,7 @@
             <a href="/"><img class="logo" src="../assets/modelVLogo.png" alt="Model Vault"></a>
             <ul>
                 <li><a href="#">Categories</a></li>
-                <li><a href="#">My Proyects</a></li>
+                <li><a id="projects" href="/proyectos">My Proyects</a></li>
                 <li><a href="#">Discussion</a></li>
             </ul>
         </section>
