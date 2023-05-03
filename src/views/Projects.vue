@@ -2,7 +2,7 @@
     <section>
         <div class="container">
             <div class="crear-container">
-                <a href="#" class="crear">Crea Proyecto</a>
+                <a href="/crear-proyecto" class="crear">Crea Proyecto</a>
             </div>
             <Card />
         </div>

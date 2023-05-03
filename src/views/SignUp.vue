@@ -1,25 +1,28 @@
 <template>
-    <section class="formulario">
-        <form @submit="signUpMethod" >
-            <h3>Sé Nuestra Comunidad</h3>
-            <div>
-                <input type="text" id="username" placeholder="Nombre de Usuario" v-model="username" required>
-            </div>
-            <div>
-                <input type="password" id="password" placeholder="Contraseña" v-model="password" required>
-            </div>
-            <div>
-                <input type="password" id="repeatPassword" placeholder="Repetir Contraseña" v-model="repeatPassword" required>
-            </div>
-            <div>
-                <input type="text" id="name" placeholder="Nombre" v-model="name">
-            </div>
-            <div>
-                <input type="email" id="email" placeholder="E-mail" v-model="email" required>
-            </div>
-            <button type="submit">Registrarse</button>
-        </form>
+    <section class="container">
+        <section class="formulario">
+            <form @submit="signUpMethod" >
+                <h3>Sé Nuestra Comunidad</h3>
+                <div>
+                    <input type="text" id="username" placeholder="Nombre de Usuario" v-model="username" required>
+                </div>
+                <div>
+                    <input type="password" id="password" placeholder="Contraseña" v-model="password" required>
+                </div>
+                <div>
+                    <input type="password" id="repeatPassword" placeholder="Repetir Contraseña" v-model="repeatPassword" required>
+                </div>
+                <div>
+                    <input type="text" id="name" placeholder="Nombre" v-model="name">
+                </div>
+                <div>
+                    <input type="email" id="email" placeholder="E-mail" v-model="email" required>
+                </div>
+                <button type="submit">Registrarse</button>
+            </form>
+        </section>
     </section>
+    
 </template>
 
 <script>
@@ -74,49 +77,61 @@ export default {
 </script>
 
 <style scoped>
-    .formulario {
-        height: 28rem;
-        display: grid;
-        justify-content: center;
-        align-content: center;
-        border: 2px solid #3f80a6;
-        border-radius: 15px;
-        margin: 8rem 16rem ;
-    }
 
-    form {
-        display: grid;
-        grid-template-columns: 100%;
-        align-items: center;
-        justify-content: center;
-        height: 20rem;
-        width: 20rem;
-    }
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
 
-    form > h3 {
-        display: flex;
-        justify-content: center;
-    }
+.formulario {
+  width: 70%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #3f80a6;
+  border-radius: 15px;
+  padding: 2rem;
+  box-sizing: border-box;
+  margin-top: 3rem;
+}
 
-    div{
-        width: 100%;
-    }
+form {
+  display: grid;
+  grid-template-columns: 100%;
+  align-items: center;
+  justify-content: center;
+  width: 40%; /* Ajustar el ancho del formulario al contenedor */
+  height: 100%; /* Ajustar la altura del formulario al contenedor */
+  box-sizing: border-box; /* Incluir el padding en las dimensiones del formulario */
+}
 
-    input{
-        width: 100%;
-        border-radius: 5px;
-        padding: .5rem;
-        border: 0;
-        
-    }
+form > h3 {
+  display: flex;
+  justify-content: center;
+}
 
-    button {
-        margin-top: 2rem;
-        border: 0;
-        border-radius: 5px;
-        padding: 1rem;
-        background-color: #9F19FF;
-        font-size: 1rem;
-        font-weight: bold;
-    }
+div {
+  width: 100%;
+}
+
+input {
+  width: 100%;
+  border-radius: 5px;
+  padding: 0.5rem;
+  border: 0;
+  margin: 5px 0;
+}
+
+button {
+  margin-top: 2rem;
+  border: 0;
+  border-radius: 5px;
+  padding: 1rem;
+  background-color: #9F19FF;
+  font-size: 1rem;
+  font-weight: bold;
+}
 </style>
