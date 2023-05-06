@@ -5,18 +5,18 @@
                     <section class="top">
                         <div class="head">
                             <div class="izquierda">
-                                <h2>/Titulo</h2>
-                                <h6>/Fecha de modificiaión</h6>
+                                <h2>/Titulo {{publication.title}}</h2>
+                                <h6>/Fecha de modificiaión {{publication.lastUpdatedDate}}</h6>
                             </div>           
                             <div class="derecha">
                                 <h4>/commit</h4>
                                 <img src="../assets/settings-gear-combination-svgrepo-com.svg" alt="">
                             </div>
                         </div>
-                        <h4>/Colaboradores</h4>
+                        <h4>/Colaboradores {{publication.username}}</h4>
                     </section>
                     <div class="foot">
-                        <h3>/Descripción</h3>
+                        <h3>/Descripción {{publication.description}}</h3>
                         <img src="../assets/menu-svgrepo-com.svg" alt="">
                     </div>
                 </section>
@@ -30,10 +30,8 @@
 <script>
     export default {
         name: 'CardComponent',
-        data(){
-            return{
-                card: ''
-            }
+        props: {
+            publication: Object
         },
     }
 </script>
