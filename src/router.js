@@ -1,8 +1,11 @@
 /*import Vue from 'vue';*/
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "./views/HomeView";
+import ProfileView from "./views/ProfileView";
 import SignUp from "./views/SignUp";
 import Login from './views/Login';
+import ShowProfileComponent from "./components/ShowProfileComponent";
+import EditProfileComponent from "./components/EditProfileComponent";
 
 export default createRouter({
     history: createWebHistory(),
@@ -22,6 +25,23 @@ export default createRouter({
             path: "/iniciar-sesion",
             name: 'LoginView',
             component: Login
+        },
+        {
+            path: "/profile",
+            name: 'ProfileView',
+            component: ProfileView,
+            children: [
+                {
+                    path: "",
+                    name: "details",
+                    component: ShowProfileComponent
+                },
+                {
+                    path: "edit",
+                    name: "edit",
+                    component: EditProfileComponent
+                }
+            ]
         }
     ]
 })
