@@ -4,6 +4,7 @@ import HomeView from "./views/HomeView";
 import ProfileView from "./views/ProfileView";
 import SignUp from "./views/SignUp";
 import Login from './views/Login';
+import Projects from './views/Projects';
 import ShowProfileComponent from "./components/ShowProfileComponent";
 import EditProfileComponent from "./components/EditProfileComponent";
 
@@ -42,6 +43,11 @@ export default createRouter({
                     component: EditProfileComponent
                 }
             ]
+        },
+        {
+            path: "/projects",
+            name: 'ProjectsView',
+            component: Projects
         }
     ]
 })
