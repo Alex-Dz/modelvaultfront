@@ -4,13 +4,13 @@
             <a href="/"><img class="logo" src="../assets/modelVLogo.png" alt="Model Vault"></a>
             <ul>
                 <li><a href="#">Categories</a></li>
-                <li><a id="projects" href="/proyectos">My Proyects</a></li>
+                <li><a href="/projects">My Proyects</a></li>
                 <li><a href="#">Discussion</a></li>
             </ul>
         </section>
         <section id="user">
         <div v-if="isUserInSession">
-            <a id="username" href="#">{{username}}</a>
+            <a id="username" href="/profile">{{username}}</a>
         </div>
         <div v-if="!isUserInSession">
             <a id="logIn" href="/iniciar-sesion">Log In</a>
