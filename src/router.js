@@ -5,6 +5,8 @@ import ProfileView from "./views/ProfileView";
 import SignUp from "./views/SignUp";
 import Login from './views/Login';
 import Projects from './views/Projects';
+import CreateProject from './views/CreateProjectView';
+import ProjectsInfo from "./views/ProjectsInfoVirew";
 import ShowProfileComponent from "./components/ShowProfileComponent";
 import EditProfileComponent from "./components/EditProfileComponent";
 
@@ -48,6 +50,16 @@ export default createRouter({
             path: "/projects",
             name: 'ProjectsView',
             component: Projects
+        },
+        {
+            path: "/crear-proyecto",
+            name: 'CreateProjectView',
+            component: CreateProject
+        },
+        {
+            path: "/info-proyecto",
+            name: "ProjectsInfoView",
+            component: ProjectsInfo
         }
     ]
 })
