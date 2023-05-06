@@ -1,7 +1,7 @@
 <template>
     <section>
         <div class="form-container">
-            <form class="form" @submit.prevent="">
+            <form class="form" @submit.prevent="submitForm">
                 <h3>Crea tu nueva idea</h3>
                 <div>
                     <input type="text" id="title" placeholder="Título" v-model="title" required>
