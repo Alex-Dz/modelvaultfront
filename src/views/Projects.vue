@@ -4,26 +4,53 @@
             <div class="crear-container">
                 <a href="/crear-proyecto" class="crear">Crea Proyecto</a>
             </div>
-            <Card />
+            <Card   v-for="publication in publications"
+                    :key="publication.id"
+                    :publication="publication"
+            />
         </div>
     </section>
 
 </template>
 
 <script>
+import axios from 'axios';
+import {getAuthenticationToken} from '@/dataStorage';
 import Card from '@/components/CardComponet.vue';
 
-//const requestPath = '/api/proyects'
+const requestPath = '/api/publication/all'
 
 export default {
     name: 'ProyectsView',
     data(){
         return{
-            proyects: ''
+            publications: []
         }
     },
     components: {
         Card
+    },
+    beforeCreate(){
+        axios.get(this.$store.state.backURL + requestPath,
+        {
+            'headers': {
+              'Authorization' : getAuthenticationToken()
+            }
+        }).then( response => {
+          if(response.status !== 200){
+              alert("Error de servidor");
+          }else{
+              console.log(response);
+              this.publications = response.data;
+          }
+        }).catch( error => {
+          console.log(error);
+          if( error.response.status === 400){
+              alert(error)
+          }else{
+              alert("Error de servidor")
+          }
+        });
     },
 };
 
