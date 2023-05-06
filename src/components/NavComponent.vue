@@ -10,7 +10,7 @@
         </section>
         <section id="user">
         <div v-if="isUserInSession">
-            <a id="username" href="#">{{username}}</a>
+            <a id="username" href="/profile">{{username}}</a>
         </div>
         <div v-if="!isUserInSession">
             <a id="logIn" href="/iniciar-sesion">Log In</a>
