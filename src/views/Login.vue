@@ -93,6 +93,7 @@ export default {
 form {
   display: grid;
   grid-template-columns: 100%;
+  text-align: center;
   align-items: center;
   justify-content: center;
   width: 40%; /* Ajustar el ancho del formulario al contenedor */
@@ -103,6 +104,7 @@ form {
 form > h3 {
   display: flex;
   justify-content: center;
+  text-align: center;
 }
 
 div {

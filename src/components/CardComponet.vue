@@ -1,39 +1,46 @@
 <template>
     <section>
-        <div class="card">
-                <section class="text">
-                    <section class="top">
-                        <div class="head">
-                            <div class="izquierda">
-                                <h2>/Titulo</h2>
-                                <h6>/Fecha de modificiaión</h6>
-                            </div>           
-                            <div class="derecha">
-                                <h4>/commit</h4>
-                                <img src="../assets/settings-gear-combination-svgrepo-com.svg" alt="">
-                            </div>
+        <div class="card" @click="redirectToProjectsInfo">
+            <section class="text">
+                <section class="top">
+                    <div class="head">
+                        <div class="izquierda">
+                            <h2>/Titulo</h2>
+                            <h6>/Fecha de modificiaión</h6>
+                        </div>           
+                        <div class="derecha">
+                            <h4>/commit</h4>
+                            <img src="../assets/settings-gear-combination-svgrepo-com.svg" alt="">
                         </div>
-                        <h4>/Colaboradores</h4>
-                    </section>
-                    <div class="foot">
-                        <h3>/Descripción</h3>
-                        <img src="../assets/menu-svgrepo-com.svg" alt="">
                     </div>
+                    <h4>/Colaboradores</h4>
                 </section>
-                <div class="placeholder-image">
-
+                <div class="foot">
+                    <h3>/Descripción</h3>
+                    <img src="../assets/menu-svgrepo-com.svg" alt="">
                 </div>
+            </section>
+            <div class="placeholder-image">
+
             </div>
+        </div>
     </section>
 </template>
 
 <script>
+
+
     export default {
         name: 'CardComponent',
         data(){
             return{
                 card: ''
             }
+        },
+        methods: {
+            redirectToProjectsInfo(){
+                this.$router.push('/info-proyecto');
+            },
         },
     }
 </script>
@@ -47,6 +54,7 @@
     height: 8rem;
     justify-content: space-between;
     margin-top: 1rem;
+    cursor: pointer;
 }
 
 .text{
