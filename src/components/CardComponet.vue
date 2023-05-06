@@ -40,11 +40,6 @@
                 this.$router.push('/info-proyecto');
             },
         },
-        methods: {
-            redirectToProjectsInfo(){
-                this.$router.push('/info-proyecto');
-            },
-        },
     }
 </script>
 
