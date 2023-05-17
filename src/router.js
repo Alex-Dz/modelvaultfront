@@ -9,6 +9,7 @@ import CreateProject from './views/CreateProjectView';
 import ProjectsInfo from "./views/ProjectsInfoVirew";
 import ShowProfileComponent from "./components/ShowProfileComponent";
 import EditProfileComponent from "./components/EditProfileComponent";
+import Updated from "./views/UpdateView.vue"
 
 export default createRouter({
     history: createWebHistory(),
@@ -60,6 +61,11 @@ export default createRouter({
             path: "/info-proyecto",
             name: "ProjectsInfoView",
             component: ProjectsInfo
+        },
+        {
+            path: "/actualizar",
+            name: "UpdateView",
+            component: Updated
         }
     ]
 })

@@ -8,7 +8,7 @@
                 </div>
                 
                 <div class="update">
-                    <a href="">Update</a>
+                    <a href="/actualizar">Update</a>
                 </div>
             </div>
             <div class="Vista-previa">
