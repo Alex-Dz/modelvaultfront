@@ -23,7 +23,7 @@
                     <h5>/Descripción</h5>
                 </div>
                 <div class="cambios">
-
+                    <versions />
                 </div>
             </div>
             
@@ -33,11 +33,13 @@
 
 <script>
     import starRating from './StarRating.vue';
+    import versions from './versionsComponent.vue';
 
     export default {
         name: 'ProjectsInfo',
         components: {
-            starRating
+            starRating,
+            versions
         },
         methods: {
             getStars(rating) {
