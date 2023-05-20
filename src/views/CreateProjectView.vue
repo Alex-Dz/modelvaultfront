@@ -10,36 +10,95 @@
                     <textarea name="description" id="description" cols="30" rows="10" placeholder="Descripción" v-model="description"></textarea>
                 </div>
                 <div class="container-archivo">
-                    <label for="archivo">Adjunta tu Archivo</label>
-                    <input class="archivo" v-on:change="onFileChange" id="archivo" type="file">
-                    <span v-show="check">✅</span>
+                    <label for="imageFiles">Adjunta tus imágenes</label>
+                    <!--<input class="archivo" v-on:change="onFileChange" id="imageFiles" type="file" accept="image/*" multiple>-->
+                    <fileBase64 id="imageFiles" :multiple=true :done="getImages" :accept="'image/*'" ></fileBase64>
+                    <span v-show="checkImages">✅</span>
+                </div>
+                <div class="container-archivo">
+                    <label for="modelFiles">Adjunta tus archivos</label>
+                    <!--<input class="archivo" v-on:change="onFileChange" id="modelFiles" type="file" accept=".stl, .pdf" multiple>-->
+                    <fileBase64 id="modelFiles" :multiple=true :done="getFiles" :accept="'.stl, .pdf'" ></fileBase64>
+                    <span v-show="checkModels">✅</span>
                 </div>
                 <button type="submit">Crear Idea</button>
+                <!--<div v-if="checkImages">
+                    <img :src="preview" />
+                </div>-->
             </form>
         </div>
     </section>
 </template>
 
 <script>
+import axios from 'axios';
+import {getAuthenticationToken,getAuthenticatedUsername} from '@/dataStorage';
+import fileBase64 from '../components/vue-file-base64.vue'
+
+const requestPath = '/api/publication/new'
 
 export default {
     name: 'CreateProjectView',
-    data() {
-        return {
-        title: "",
-        description: "",
-        file: null,
-        check: false,
+    beforeCreate( ){
+        if( getAuthenticationToken() == null + ' ' + null ) {
+            this.$router.push( {name: 'LoginView'} )
+            console.log('need to login: redirect to login');
         }
     },
+    data() {
+        return {
+            title: "",
+            description: "",
+            imagesList: [],
+            filesList: [],
+            file: null,
+            checkImages: false,
+            checkModels: false,
+            preview: undefined,
+        }
+    },
+    components: { fileBase64 },
     methods: {
         submitForm() {
-        // Lógica de envío del formulario
+            /*console.log(getAuthenticationToken());*/
+            axios.post(this.$store.state.backURL + requestPath,
+                {
+                    title: this.title.trim(),
+                    description: this.description.trim(),
+                    username: getAuthenticatedUsername(),
+                    imagesList: this.imagesList,
+                    filesList: this.filesList
+                },
+                {
+                  'headers': {
+                      'Authorization' : getAuthenticationToken()
+                  }
+                }).then( response => {
+                  if(response.status !== 201){
+                      alert("Error de servidor");
+                  }else{
+                      /*console.log(response);*/
+                      this.$router.push( {name: 'ProjectsInfoView', params: {id: response.data.id}} )
+                  }
+                }).catch( error => {
+                  console.log(error);
+                  if( error.response.status === 400){
+                      alert(error)
+                  }else{
+                      alert("Error de servidor")
+                  }
+                });
         },
-        onFileChange(event){
-            this.file = event.target.files[0];
-            this.check = !!this.file;
-        }
+        getImages(images) {
+            /*console.log(images);*/
+            this.imagesList = images;
+            this.checkImages = true;
+        },
+        getFiles(files) {
+            /*console.log(files);*/
+            this.filesList = files;
+            this.checkModels = true;
+        },
     }
 };
 </script>

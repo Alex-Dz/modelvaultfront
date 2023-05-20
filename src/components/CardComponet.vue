@@ -5,7 +5,7 @@
                 <section class="top">
                     <div class="head">
                         <div class="izquierda">
-                            <h2>/Titulo {{publication.title}}</h2>
+                            <h2>/{{publication.title}}</h2>
                             <h6>/Fecha de modificiaión {{publication.lastUpdatedDate}}</h6>
                         </div>           
                         <div class="derecha">
@@ -36,7 +36,7 @@
         },
         methods: {
             redirectToProjectsInfo(){
-                this.$router.push('/info-proyecto');
+                this.$router.push('/publication/' + this.publication.id);
             },
         },
     }

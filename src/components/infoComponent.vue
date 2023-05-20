@@ -3,7 +3,7 @@
         <div class="container">
             <div class="header">
                 <div class="title">
-                    <h3>/Titulo Proyecto</h3>
+                    <h3>/{{publication.title}}</h3>
                     <p>/Etiquetas</p>
                 </div>
                 
@@ -19,8 +19,8 @@
                     <div class="clasificaión">
                         <starRating @rated="getStars" />
                     </div>
-                    <p>/Colaboradores</p>
-                    <h5>/Descripción</h5>
+                    <p>/{{publication.username}}</p>
+                    <h5>/{{publication.description}}</h5>
                 </div>
                 <div class="cambios">
                     <versions />
@@ -41,12 +41,22 @@
             starRating,
             versions
         },
+        props: {
+            publication: Object
+        },
+        data() {
+            return {
+                file: null,
+                check: false,
+            }
+        },
         methods: {
             getStars(rating) {
                 // Get the value
                 const val = parseFloat(rating);
                 // Turn value into number/100
                 const size = val/5*100;
+                console.log(val);
                 return `${size}%`;
             }
         }

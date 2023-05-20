@@ -31,26 +31,31 @@ export default {
         Card
     },
     beforeCreate(){
-        axios.get(this.$store.state.backURL + requestPath,
-        {
-            'headers': {
-              'Authorization' : getAuthenticationToken()
-            }
-        }).then( response => {
-          if(response.status !== 200){
-              alert("Error de servidor");
-          }else{
-              console.log(response);
-              this.publications = response.data;
-          }
-        }).catch( error => {
-          console.log(error);
-          if( error.response.status === 400){
-              alert(error)
-          }else{
-              alert("Error de servidor")
-          }
-        });
+        if( getAuthenticationToken() == null + ' ' + null ) {
+            this.$router.push( {name: 'LoginView'} )
+            console.log('need to login: redirect to login');
+        } else {
+            axios.get(this.$store.state.backURL + requestPath,
+              {
+                  'headers': {
+                      'Authorization' : getAuthenticationToken()
+                  }
+              }).then( response => {
+                  if(response.status !== 200){
+                      alert("Error de servidor");
+                  }else{
+                      console.log(response);
+                      this.publications = response.data;
+                  }
+              }).catch( error => {
+                  console.log(error);
+                  if( error.response.status === 400){
+                      alert(error)
+                  }else{
+                      alert("Error de servidor")
+                  }
+              });
+        }
     },
 };
 
