@@ -60,6 +60,8 @@ export default {
                     alert("Error de servidor")
                 }else{
                     alert("Usuario registrado exitosamente")
+                    this.$router.push( {name: 'LoginView'} );
+                    this.$router.go();
                 }
             }).catch( error => {
                 console.log(error);

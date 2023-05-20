@@ -11,6 +11,7 @@
         <section id="user">
         <div v-if="isUserInSession">
             <a id="username" href="/profile">{{username}}</a>
+            <button id="logout" type="button" @click="logout">Log Out</button>
         </div>
         <div v-if="!isUserInSession">
             <a id="logIn" href="/iniciar-sesion">Log In</a>
@@ -28,7 +29,14 @@ export default {
     data: () => ({
         isUserInSession: getAuthenticatedUsername() != null ? true : false,
         username: getAuthenticatedUsername()
-    })
+    }),
+    methods: {
+        logout() {
+            localStorage.clear();
+            this.$router.push( {name: 'HomeView'} );
+            this.$router.go();
+        }
+    }
 };
 </script>
 
