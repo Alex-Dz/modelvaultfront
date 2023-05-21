@@ -1,7 +1,7 @@
 <template>
     <section>
         <div>
-            <ProjectsInfo :publication="publication"/>
+            <ProjectsInfo :publication="publication" :versions="versions"/>
         </div>
     </section>
 </template>
@@ -11,7 +11,9 @@ import axios from 'axios';
 import {getAuthenticationToken} from '@/dataStorage';
 import ProjectsInfo from '@/components/infoComponent.vue';
 
-const requestPath = '/api/publication/'
+const requestPath = '/api/publication/';
+const requestPathVersions1 = '/api/publication/';
+const requestPathVersions2 = '/version/all';
 
 export default {
     name: 'ProjectsInfoView',
@@ -41,11 +43,36 @@ export default {
                       alert("Error de servidor")
                   }
               });
+            console.log(this.$store.state.backURL + requestPathVersions1 + this.$route.params.id + requestPathVersions2);
+            axios.get(this.$store.state.backURL + requestPathVersions1 + this.$route.params.id + requestPathVersions2,
+              {
+                  'headers': {
+                      'Authorization' : getAuthenticationToken()
+                  }
+              }).then( response => {
+                  if(response.status !== 202){
+                      alert("Error de servidor");
+                  }else{
+                      this.versions = response.data;
+                      /*console.log('versions--> ' + JSON.stringify(this.versions));*/
+                  }
+              }).catch( error => {
+                  console.log(error);
+                  if( error.response.status === 400){
+                      alert(error)
+                  }else{
+                      alert("Error de servidor")
+                  }
+              });
         }
     },
     data(){
         return{
-            publication: Object
+            publication: Object,
+            versions: {
+                type: Array,
+                default: () => [],
+            }
         }
     },
     components: {

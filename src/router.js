@@ -6,6 +6,7 @@ import SignUp from "./views/SignUp";
 import Login from './views/Login';
 import Projects from './views/Projects';
 import CreateProject from './views/CreateProjectView';
+import CreateVersion from './views/CreateVersionView';
 import ProjectsInfo from "./views/ProjectsInfoView";
 import ShowProfileComponent from "./components/ShowProfileComponent";
 import EditProfileComponent from "./components/EditProfileComponent";
@@ -61,6 +62,11 @@ export default createRouter({
             path: "/publication/:id",
             name: "ProjectsInfoView",
             component: ProjectsInfo
+        },
+        {
+            path: "/publication/:id/new-version",
+            name: 'CreateVersionView',
+            component: CreateVersion
         },
         {
             path: "/actualizar",

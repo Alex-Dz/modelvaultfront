@@ -11,13 +11,11 @@
                 </div>
                 <div class="container-archivo">
                     <label for="imageFiles">Adjunta tus imágenes</label>
-                    <!--<input class="archivo" v-on:change="onFileChange" id="imageFiles" type="file" accept="image/*" multiple>-->
                     <fileBase64 id="imageFiles" :multiple=true :done="getImages" :accept="'image/*'" ></fileBase64>
                     <span v-show="checkImages">✅</span>
                 </div>
                 <div class="container-archivo">
                     <label for="modelFiles">Adjunta tus archivos</label>
-                    <!--<input class="archivo" v-on:change="onFileChange" id="modelFiles" type="file" accept=".stl, .pdf" multiple>-->
                     <fileBase64 id="modelFiles" :multiple=true :done="getFiles" :accept="'.stl, .pdf'" ></fileBase64>
                     <span v-show="checkModels">✅</span>
                 </div>

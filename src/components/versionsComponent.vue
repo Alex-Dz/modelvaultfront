@@ -3,7 +3,10 @@
         <h3>Versions</h3>
         <ul>
             <li v-for="(version, index) in versions" :key="index">
-                <p>{{ version }}</p>
+                <p>version {{ version.versionNumber }}</p>
+                <p>create date {{ version.createdDate }}</p>
+                <p>last update {{ version.lastUpdatedDate }}</p>
+                <p>score {{ version.score }}</p>
             </li>
         </ul>
     </div>

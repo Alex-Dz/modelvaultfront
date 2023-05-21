@@ -17,13 +17,14 @@
             <div class="bot">
                 <div class="detalles">
                     <div class="clasificaión">
-                        <starRating @rated="getStars" />
+                        <starRating @rated="getStars" :rating="publication.score"/>
                     </div>
                     <p>/{{publication.username}}</p>
                     <h5>/{{publication.description}}</h5>
                 </div>
+                <button id="newVersion" class="update" type="button" @click="newVersion">New version</button>
                 <div class="cambios">
-                    <versions />
+                    <versions :versions="versions"/>
                 </div>
             </div>
             
@@ -32,8 +33,12 @@
 </template>
 
 <script>
+    import axios from 'axios';
+    import {getAuthenticationToken, getAuthenticatedUsername} from '@/dataStorage';
     import starRating from './StarRating.vue';
     import versions from './versionsComponent.vue';
+
+    const requestPath = '/api/publication/vote';
 
     export default {
         name: 'ProjectsInfo',
@@ -42,12 +47,23 @@
             versions
         },
         props: {
-            publication: Object
+            publication: Object,
+            versions: {
+                type: Array,
+                default: () => [],
+            }
+        },
+        beforeCreate() {
+            if( getAuthenticationToken() == null + ' ' + null ) {
+                this.$router.push( {name: 'LoginView'} )
+                console.log('need to login: redirect to login');
+            }
+            console.log(this.versions);
         },
         data() {
             return {
-                file: null,
-                check: false,
+                score: undefined,
+                versionId: undefined,
             }
         },
         methods: {
@@ -56,8 +72,40 @@
                 const val = parseFloat(rating);
                 // Turn value into number/100
                 const size = val/5*100;
-                console.log(val);
-                return `${size}%`;
+                console.log('star-> ' + val);
+                console.log('versionId-> ' + this.publication.version.versionId);
+                axios.post(this.$store.state.backURL + requestPath,
+                   {
+                       publicationId: this.publication.id,
+                       username: getAuthenticatedUsername(),
+                       versionId: this.publication.version.versionId,
+                       score: val
+                   },
+                   {
+                       'headers': {
+                           'Authorization' : getAuthenticationToken()
+                       }
+                   }).then( response => {
+                       if(response.status !== 202){
+                           alert("Error de servidor")
+                       }else{
+                           console.log(response);
+                           /*this.publication.score = val;*/
+                           return `${size}%`;
+                       }
+                   }).catch( error => {
+                       console.log(error);
+                       if( error.response.status === 400){
+                           alert(error)
+                       }else{
+                           alert("Error de servidor")
+                       }
+                   });
+            },
+            newVersion() {
+                let url = '/publication/' + this.publication.id + '/new-version';
+                console.log(url);
+                this.$router.push({path: url, params: {publication: this.publication}});
             }
         }
     }  

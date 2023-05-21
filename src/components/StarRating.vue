@@ -6,7 +6,7 @@
         :icon="['fas', 'star']"
         :class="{
           'star': true,
-          'star--filled': index < userRating
+          'star--filled': index < rating
         }"
         @click="rate(index + 1)"
       />
@@ -19,6 +19,12 @@
       return {
         userRating: 0
       };
+    },
+    props: {
+      rating: {
+        type: Number,
+        default: 0
+      }
     },
     methods: {
       rate(rating) {
