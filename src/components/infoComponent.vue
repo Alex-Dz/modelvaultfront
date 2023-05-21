@@ -12,7 +12,7 @@
                 </div>
             </div>
             <div class="Vista-previa">
-
+                <VueCarousel class="carrusel" :data="slides" />
             </div>
             <div class="bot">
                 <div class="detalles">
@@ -37,6 +37,8 @@
     import {getAuthenticationToken, getAuthenticatedUsername} from '@/dataStorage';
     import starRating from './StarRating.vue';
     import versions from './versionsComponent.vue';
+    import VueCarousel from '@chenfengyuan/vue-carousel';
+    import { h } from 'vue';
 
     const requestPath = '/api/publication/vote';
 
@@ -44,8 +46,10 @@
         name: 'ProjectsInfo',
         components: {
             starRating,
-            versions
+            versions,
+            VueCarousel,
         },
+
         props: {
             publication: Object,
             versions: {
@@ -62,8 +66,24 @@
         },
         data() {
             return {
-                score: undefined,
-                versionId: undefined,
+                file: null,
+                check: false,
+                images: [
+                    { text: 'Slide 1', url: 'https://via.placeholder.com/150' },
+                    { text: 'Slide 2', url: 'https://via.placeholder.com/150' },
+                    { text: 'Slide 3', url: 'https://via.placeholder.com/150' },
+                    { url: 'https://images.ctfassets.net/hrltx12pl8hq/4vqSlFigJRtMR5fxe5fW7l/4415c36c9b6e6757b77558d08a4dc64a/shutterstock_1907086906.jpg' }
+                ]
+            }
+        },
+        computed: {
+            slides() {
+                return this.images.map(image => 
+                    h('div', { class: 'example-slide' }, [
+                        h('img', { src: image.url, class: 'slide-image' }),
+                        image.text ? h('p', image.text) : null
+                    ])
+                );
             }
         },
         methods: {
@@ -156,11 +176,54 @@
 
     .Vista-previa{
         width: 100%;
-        height: 16rem;
+        height: 400px; /* Definir una altura fija */
         border-radius: 10px;
         background-color: #9F19FF;
         margin-top: 1rem;
+        overflow: hidden;
     }
+    
+    .Vista-previa img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .slide-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+
+    .carrusel {
+        width: 100%;  /* Asegurar que el carrusel ocupe todo el ancho */
+        height: 100%; /* Asegurar que el carrusel ocupe toda la altura */
+        display: flex; /* Esto permitirá centrar la imagen en caso de que sea demasiado pequeña */
+        justify-content: center; /* Centrar horizontalmente */
+        align-items: center; /* Centrar verticalmente */
+    }
+    
+    .example-slide {
+        align-items: center;
+        background-color: #666;
+        color: #999;
+        display: flex;
+        font-size: 1.5rem;
+        justify-content: center;
+        min-height: 10rem;
+        width: 100%; /* Asegurarse de que el slide ocupe todo el ancho */
+        height: 100%; /* Asegurarse de que el slide ocupe toda la altura */
+    }
+    
+    .example-slide img {
+        max-width: 100%;  /* Hacer que la imagen no exceda el ancho del slide */
+        max-height: 100%; /* Hacer que la imagen no exceda la altura del slide */
+        object-fit: contain; /* Esta regla hará que la imagen cubra todo el slide sin estirarse ni aplastarse */
+        border-radius: 10px;
+        background-repeat: no-repeat;
+    }
+    
 
     .bot{
         display: flex;
