@@ -24,6 +24,9 @@
                 </div>
                 <button id="newVersion" class="update" type="button" @click="newVersion">New version</button>
                 <div class="cambios">
+                    <downloadFiles :files="publication.version.filesList"></downloadFiles>
+                </div>
+                <div class="cambios">
                     <versions :versions="versions"/>
                 </div>
             </div>
@@ -39,6 +42,7 @@
     import versions from './versionsComponent.vue';
     import VueCarousel from '@chenfengyuan/vue-carousel';
     import { h } from 'vue';
+    import downloadFiles from './DownloadFilesComponent.vue';
 
     const requestPath = '/api/publication/vote';
 
@@ -48,6 +52,7 @@
             starRating,
             versions,
             VueCarousel,
+            downloadFiles
         },
 
         props: {
