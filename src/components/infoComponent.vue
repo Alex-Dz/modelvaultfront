@@ -60,7 +60,15 @@
             versions: {
                 type: Array,
                 default: () => [],
+            },
+            images: {
+                type: Array,
+                default: () => [
+                    { text: 'Slide 1', url: 'https://via.placeholder.com/150' },
+                    { text: 'Slide 2', url: 'https://via.placeholder.com/150' }
+                ]
             }
+
         },
         beforeCreate() {
             if( getAuthenticationToken() == null + ' ' + null ) {
@@ -72,13 +80,7 @@
         data() {
             return {
                 file: null,
-                check: false,
-                images: [
-                    { text: 'Slide 1', url: 'https://via.placeholder.com/150' },
-                    { text: 'Slide 2', url: 'https://via.placeholder.com/150' },
-                    { text: 'Slide 3', url: 'https://via.placeholder.com/150' },
-                    { url: 'https://images.ctfassets.net/hrltx12pl8hq/4vqSlFigJRtMR5fxe5fW7l/4415c36c9b6e6757b77558d08a4dc64a/shutterstock_1907086906.jpg' }
-                ]
+                check: false
             }
         },
         computed: {

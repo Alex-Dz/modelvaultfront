@@ -28,13 +28,9 @@ export default {
 	},
 	methods: {
 		downloadFile(file) {
-			console.log(file.fileName);
-			/*let file = JSON.stringify(value);*/
 			const linkSource = file.fileData;
-			console.log(linkSource);
 			const dowloadLink = document.createElement('a');
 			const fileName = file.fileName;
-			console.log(fileName);
 
 			dowloadLink.href = linkSource;
 			dowloadLink.download = fileName;

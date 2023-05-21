@@ -1,7 +1,7 @@
 <template>
     <section>
         <div>
-            <ProjectsInfo :publication="publication" :versions="versions"/>
+            <ProjectsInfo :publication="publication" :versions="versions" :images="images"/>
         </div>
     </section>
 </template>
@@ -32,8 +32,16 @@ export default {
                   if(response.status !== 202){
                       alert("Error de servidor");
                   }else{
-                      console.log(response);
+                      /*console.log(response);*/
                       this.publication = response.data;
+                      this.images = [];
+                      for (let i = 0; i < response.data.version.imagesList.length; i++) {
+                          this.images.push({
+                              text: response.data.version.imagesList[i].fileName,
+                              url: response.data.version.imagesList[i].fileData
+                          })
+                      }
+                      /*console.log(this.images);*/
                   }
               }).catch( error => {
                   console.log(error);
@@ -72,6 +80,13 @@ export default {
             versions: {
                 type: Array,
                 default: () => [],
+            },
+            images: {
+                type: Array,
+                default: () => [
+                    { text: 'Slide 1', url: 'https://via.placeholder.com/150' },
+                    { text: 'Slide 2', url: 'https://via.placeholder.com/150' }
+                ]
             }
         }
     },
