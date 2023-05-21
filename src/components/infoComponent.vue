@@ -145,7 +145,7 @@
         justify-content: center;
         align-items: center;
         height: 100%;
-        width: 80%;
+        width: 95%;
     }
 
     .header{
@@ -171,7 +171,7 @@
 
     
     .update{
-        width: 8rem;
+        width: 10rem;
         height: 2rem;
         display: flex;
         justify-content: center;

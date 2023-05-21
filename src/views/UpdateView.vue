@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import {getAuthenticationToken} from '@/dataStorage';
 import versionsComponent from '../components/versionsComponent.vue'
 
 export default {
@@ -37,6 +38,12 @@ export default {
         description: "",
         file: null,
         check: false,
+        }
+    },
+    beforeCreate() {
+        if( getAuthenticationToken() == null + ' ' + null ) {
+            this.$router.push( {name: 'LoginView'} )
+            console.log('need to login: redirect to login');
         }
     },
     created() {

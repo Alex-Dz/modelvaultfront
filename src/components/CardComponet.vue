@@ -5,18 +5,18 @@
                 <section class="top">
                     <div class="head">
                         <div class="izquierda">
-                            <h2>/{{publication.title}}</h2>
-                            <h6>/Fecha de modificiaión {{publication.lastUpdatedDate}}</h6>
+                            <h2>{{publication.title}}</h2>
+                            <h6>Fecha de modificiaión {{publication.lastUpdatedDate}}</h6>
                         </div>           
                         <div class="derecha">
                             <h4>/commit</h4>
                             <img src="../assets/settings-gear-combination-svgrepo-com.svg" alt="">
                         </div>
                     </div>
-                    <h4>/Colaboradores {{publication.username}}</h4>
+                    <h4>Colaboradores {{publication.username}}</h4>
                 </section>
                 <div class="foot">
-                    <h3>/Descripción {{publication.description}}</h3>
+                    <h3>{{publication.description}}</h3>
                     <img src="../assets/menu-svgrepo-com.svg" alt="">
                 </div>
             </section>
@@ -47,7 +47,7 @@
     display: flex;
     background-color: white; 
     border-radius: 10px;
-    width: 50rem;
+    width: 80rem;
     height: 8rem;
     justify-content: space-between;
     margin-top: 1rem;
