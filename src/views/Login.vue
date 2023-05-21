@@ -19,10 +19,10 @@
 <script>
 import axios from 'axios';
 import {setAuthenticationToken} from '@/dataStorage';
+import {getAuthenticationToken} from '@/dataStorage';
 import {setAuthenticationBearer} from '@/dataStorage';
 import {setAuthenticatedUsername} from '@/dataStorage';
 import {setAuthenticatedName} from '@/dataStorage';
-/*import {getAuthenticationToken} from '@/dataStorage';*/
 
 const requestPath = '/api/login';
 
@@ -32,6 +32,11 @@ export default {
         return{
             username: '',
             password: ''
+        }
+    },
+    beforeCreate() {
+        if( getAuthenticationToken() != null + ' ' + null ) {
+            this.$router.push( {name: 'HomeView'} )
         }
     },
     methods:{
@@ -52,6 +57,7 @@ export default {
                     /*alert("Usuario registrado exitosamente");*/
                     /*console.log(getAuthenticationToken());*/
                     this.$router.push( {name: 'HomeView'} );
+                    this.$router.go();
                 }
             }).catch( error => {
                 console.log(error);

@@ -15,7 +15,7 @@ export default{
     name: "HomeView",
     components: { HomeComponent },
     beforeCreate( ){
-        if( !getAuthenticationToken( ) ) {
+        if( getAuthenticationToken() == null + ' ' + null ) {
             /*this.$router.push( {name: 'LoginView'} )*/
             console.log('need to login: redirect to login');
         }

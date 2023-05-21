@@ -6,9 +6,11 @@ import SignUp from "./views/SignUp";
 import Login from './views/Login';
 import Projects from './views/Projects';
 import CreateProject from './views/CreateProjectView';
-import ProjectsInfo from "./views/ProjectsInfoVirew";
+import CreateVersion from './views/CreateVersionView';
+import ProjectsInfo from "./views/ProjectsInfoView";
 import ShowProfileComponent from "./components/ShowProfileComponent";
 import EditProfileComponent from "./components/EditProfileComponent";
+import Updated from "./views/UpdateView.vue"
 
 export default createRouter({
     history: createWebHistory(),
@@ -47,7 +49,7 @@ export default createRouter({
             ]
         },
         {
-            path: "/projects",
+            path: "/publications",
             name: 'ProjectsView',
             component: Projects
         },
@@ -57,9 +59,19 @@ export default createRouter({
             component: CreateProject
         },
         {
-            path: "/info-proyecto",
+            path: "/publication/:id",
             name: "ProjectsInfoView",
             component: ProjectsInfo
+        },
+        {
+            path: "/publication/:id/new-version",
+            name: 'CreateVersionView',
+            component: CreateVersion
+        },
+        {
+            path: "/actualizar",
+            name: "UpdateView",
+            component: Updated
         }
     ]
 })
