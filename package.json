@@ -7,9 +7,9 @@
     "npm": "9.6.7"
   },
   "scripts": {
-    "dev": "node --optimize_for_size server.js",
-    "heroku-postbuild": "npm install --only=dev && npm install && npm run build && vue-cli-service serve",
-    "start": "vue-cli-service serve",
+    "start": "node --optimize_for_size --max_old_space_size=2560 server.js",
+    "heroku-postbuild": "npm install --only=dev && npm install && npm run build",
+    
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
