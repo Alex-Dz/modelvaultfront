@@ -6,10 +6,10 @@
                     <h3>{{publication.title}}</h3>
                     <p>/Etiquetas</p>
                 </div>
-                
-                <div class="update">
+                <button id="edit" class="update" type="button" @click="edit">Edit</button>
+<!--                <div class="update">
                     <a href="/actualizar">Update</a>
-                </div>
+                </div>-->
             </div>
             <div class="Vista-previa">
                 <VueCarousel class="carrusel" :data="slides" />
@@ -22,12 +22,14 @@
                     <p>{{publication.username}}</p>
                     <h5>{{publication.description}}</h5>
                 </div>
-                <button id="newVersion" class="update" type="button" @click="newVersion">New version</button>
-                <div class="cambios">
-                    <downloadFiles :files="publication.version.filesList"></downloadFiles>
-                </div>
-                <div class="cambios">
-                    <versions :versions="versions"/>
+                <div class="bloque-veriones">
+                    <button id="newVersion" class="update" type="button" @click="newVersion">New version</button>
+                    <div class="cambios">
+                        <downloadFiles :files="publication.version.filesList"></downloadFiles>
+                    </div>
+                    <div class="cambios">
+                        <versions :versions="versions"/>
+                    </div>
                 </div>
             </div>
             
@@ -128,6 +130,11 @@
                            alert("Error de servidor")
                        }
                    });
+            },
+            edit() {
+                let url = '/publication/' + this.publication.id + '/edit';
+                console.log(url);
+                this.$router.push({path: url, params: {publication: this.publication}});
             },
             newVersion() {
                 let url = '/publication/' + this.publication.id + '/new-version';
@@ -237,20 +244,39 @@
         flex-direction: row;
         justify-content: space-between;
         width: 100%;
-        height: 20rem;
+        height: auto; /* cambiar a auto para adaptar el contenido */
         border-radius: 10px;
         margin-top: 1rem;
         word-break: break-all;
+        padding: 1rem; /* añadir padding para dar espacio a los contenidos */
+    }
+
+    .clasificaión{
+        display: flex;
+        justify-content: start;
     }
 
     .detalles{
         margin-left: 1rem;
+        width: 60%; /* dar espacio al bloque de detalles */
+    }
+
+    .bloque-veriones{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start; /* alinear el contenido al inicio */
+        align-items: end;
+        width: 40%; /* definir la anchura del bloque de versiones */
+        height: auto; /* cambiar a auto para adaptar el contenido */
+        border-radius: 10px;
+        padding: 1rem; /* añadir padding para dar espacio a los contenidos */
     }
 
     .cambios{
+        margin-top: 1rem; /* añadir margen para separar los elementos cambios */
         margin-right: 1rem;
         background-color: aliceblue;
-        width: 40%;
+        width: 100%; /* hacer que los cambios tomen todo el ancho disponible */
         border-radius: 10px;
     }
 

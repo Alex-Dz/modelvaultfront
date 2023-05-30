@@ -7,7 +7,7 @@
                     <input type="text" id="title" placeholder="Título" v-model="title" required>
                 </div>
                 <div>
-                    <textarea name="description" id="description" cols="30" rows="10" placeholder="Descripción" v-model="description"></textarea>
+                    <textarea name="description" id="description" cols="30" rows="10" placeholder="Descripción" v-model="description" required></textarea>
                 </div>
                 <div class="container-archivo">
                     <label for="imageFiles">Adjunta tus imágenes</label>
