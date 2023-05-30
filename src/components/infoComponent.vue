@@ -22,12 +22,14 @@
                     <p>/{{publication.username}}</p>
                     <h5>/{{publication.description}}</h5>
                 </div>
-                <button id="newVersion" class="update" type="button" @click="newVersion">New version</button>
-                <div class="cambios">
-                    <downloadFiles :files="publication.version.filesList"></downloadFiles>
-                </div>
-                <div class="cambios">
-                    <versions :versions="versions"/>
+                <div class="bloque-veriones">
+                    <button id="newVersion" class="update" type="button" @click="newVersion">New version</button>
+                    <div class="cambios">
+                        <downloadFiles :files="publication.version.filesList"></downloadFiles>
+                    </div>
+                    <div class="cambios">
+                        <versions :versions="versions"/>
+                    </div>
                 </div>
             </div>
             
@@ -237,20 +239,39 @@
         flex-direction: row;
         justify-content: space-between;
         width: 100%;
-        height: 20rem;
+        height: auto; /* cambiar a auto para adaptar el contenido */
         border-radius: 10px;
         margin-top: 1rem;
         word-break: break-all;
+        padding: 1rem; /* añadir padding para dar espacio a los contenidos */
+    }
+
+    .clasificaión{
+        display: flex;
+        justify-content: start;
     }
 
     .detalles{
         margin-left: 1rem;
+        width: 60%; /* dar espacio al bloque de detalles */
+    }
+
+    .bloque-veriones{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start; /* alinear el contenido al inicio */
+        align-items: end;
+        width: 40%; /* definir la anchura del bloque de versiones */
+        height: auto; /* cambiar a auto para adaptar el contenido */
+        border-radius: 10px;
+        padding: 1rem; /* añadir padding para dar espacio a los contenidos */
     }
 
     .cambios{
+        margin-top: 1rem; /* añadir margen para separar los elementos cambios */
         margin-right: 1rem;
         background-color: aliceblue;
-        width: 40%;
+        width: 100%; /* hacer que los cambios tomen todo el ancho disponible */
         border-radius: 10px;
     }
 
