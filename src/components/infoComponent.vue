@@ -3,7 +3,7 @@
         <div class="container">
             <div class="header">
                 <div class="title">
-                    <h3>/{{publication.title}}</h3>
+                    <h3>{{publication.title}}</h3>
                     <p>/Etiquetas</p>
                 </div>
                 
@@ -19,8 +19,8 @@
                     <div class="clasificaión">
                         <starRating @rated="getStars" :rating="publication.score"/>
                     </div>
-                    <p>/{{publication.username}}</p>
-                    <h5>/{{publication.description}}</h5>
+                    <p>{{publication.username}}</p>
+                    <h5>{{publication.description}}</h5>
                 </div>
                 <div class="bloque-veriones">
                     <button id="newVersion" class="update" type="button" @click="newVersion">New version</button>
