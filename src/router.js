@@ -69,7 +69,7 @@ export default createRouter({
             component: CreateVersion
         },
         {
-            path: "/actualizar",
+            path: "/publication/:id/edit",
             name: "UpdateView",
             component: Updated
         }

@@ -6,10 +6,10 @@
                     <h3>{{publication.title}}</h3>
                     <p>/Etiquetas</p>
                 </div>
-                
-                <div class="update">
+                <button id="edit" class="update" type="button" @click="edit">Edit</button>
+<!--                <div class="update">
                     <a href="/actualizar">Update</a>
-                </div>
+                </div>-->
             </div>
             <div class="Vista-previa">
                 <VueCarousel class="carrusel" :data="slides" />
@@ -130,6 +130,11 @@
                            alert("Error de servidor")
                        }
                    });
+            },
+            edit() {
+                let url = '/publication/' + this.publication.id + '/edit';
+                console.log(url);
+                this.$router.push({path: url, params: {publication: this.publication}});
             },
             newVersion() {
                 let url = '/publication/' + this.publication.id + '/new-version';
