@@ -42,7 +42,7 @@ export default {
 
 <style scoped>
     nav{
-        background-color: #3f80a6;
+        background-color: var(--dark-theme);
         width: 100%;
         height: 8rem;
         display: flex;
@@ -51,6 +51,7 @@ export default {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4);
     }
     .logo{
         width: 50px;
@@ -62,7 +63,7 @@ export default {
         display: flex;
         align-items: center;
         margin: 0 0 0 2rem;
-        color: white;
+        color: var(--blanco);
     }
 
     ul {
@@ -77,7 +78,7 @@ export default {
         font-size: large;
         padding: 1rem;
         text-decoration: none;
-        color: black;
+        color: var(--blanco);
     }
 
     a:hover{
@@ -89,20 +90,21 @@ export default {
     }
 
     #logIn{
-        background-color: white;
+        background-color: var(--blanco);
         padding: 1rem;
         margin: 1rem;
         border-radius: 10px;
+        color: var(--negro);
     }
 
     #signUp{
-        background-color: #9F19FF;
+        background-color: var(--secundario);
         padding: 1rem;
         border-radius: 10px;
     }
 
     #logout{
-        background-color: white;
+        background-color: var(--blanco);
         padding: 1rem;
         margin: 1rem;
         border-radius: 10px;

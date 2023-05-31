@@ -1,19 +1,28 @@
 <template>
-    <div class="container">
-        <div class="row">
-            <HomeComponent/>
-            <router-view></router-view>
+    <section>
+        <NavComponent/>
+        <div class="container">
+            
+            <div class="row">
+                <HomeComponent/>
+                <router-view></router-view>
+            </div>
         </div>
-    </div>
+    </section>
+    
 </template>
 
 <script>
 import {getAuthenticationToken} from '@/dataStorage';
 import HomeComponent from '../components/HomeComponent.vue'
+import NavComponent from '../components/NavComponent.vue'
 
 export default{
     name: "HomeView",
-    components: { HomeComponent },
+    components: { 
+        HomeComponent,
+        NavComponent,
+    },
     beforeCreate( ){
         if( getAuthenticationToken() == null + ' ' + null ) {
             /*this.$router.push( {name: 'LoginView'} )*/
@@ -24,21 +33,28 @@ export default{
 </script>
 
 <style>
-*{
-box-sizing: border-box;
-margin: 0;
-padding: 0;
-}
+    .container, .row {
+        overflow: auto;
+    }
 
-body{
-background-color: #D9E7F3;
-}
+    .container{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100%;
+    }
+    .row{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-#app{
-font-family: Avenir, Helvetica, Arial, sans-serif;
--webkit-font-smoothing: antialiased;
--moz-osx-font-smoothing: grayscale;
-width: 100%;
-height: 100%;
-}
+    .row > * {
+        flex-shrink: 0;
+    }
+    
 </style>
