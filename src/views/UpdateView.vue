@@ -1,5 +1,6 @@
 <template>
     <section>
+        <NavComponent/>
         <div class="form-container">
             <form class="form" @submit.prevent="submitForm">
                 <h3>Actualiza tu idea</h3>
@@ -30,6 +31,7 @@
 <script>
 import axios from 'axios';
 import {getAuthenticationToken, getAuthenticatedUsername} from '@/dataStorage';
+import NavComponent from '../components/NavComponent.vue'
 /*import versionsComponent from '../components/versionsComponent.vue'*/
 
 const requestPath = '/api/publication/';
@@ -37,9 +39,10 @@ const requestPathEdit = '/api/publication/edit'
 
 export default {
     name: 'UpdateView',
-    /*components: {
-        versionsComponent
-    },*/
+    components: {
+        /*versionsComponent,*/
+        NavComponent
+    },
     data() {
         return {
             title: "",

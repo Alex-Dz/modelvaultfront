@@ -1,4 +1,5 @@
 <template>
+	<NavComponent/>
     <section>
         <div class="form-container">
             <form class="form" @submit.prevent="submitForm">
@@ -32,15 +33,17 @@
 import axios from 'axios';
 import {getAuthenticationToken,getAuthenticatedUsername} from '@/dataStorage';
 import fileBase64 from '../components/vue-file-base64.vue'
+import NavComponent from '../components/NavComponent.vue'
 
 const requestGetPath = '/api/publication/';
 const requestPostPath = '/api/publication/new-version';
 
 export default {
 	name: 'CreateVersionView',
-	/*props: {
-		publication: Object
-	},*/
+	components: {
+		fileBase64,
+		NavComponent,
+	},
 	beforeCreate( ){
 		if( getAuthenticationToken() == null + ' ' + null ) {
 			this.$router.push( {name: 'LoginView'} )
@@ -85,7 +88,6 @@ export default {
 			preview: undefined,
 		}
 	},
-	components: { fileBase64 },
 	methods: {
 		submitForm() {
 			/*console.log(getAuthenticationToken());*/
@@ -132,18 +134,18 @@ export default {
 
 <style scoped>
 
-section{
+/*section{
     display: flex;
     justify-content: center;
     align-items: center;
-}
+}*/
 
-.form-container {
+/*.form-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%; /* Cambiar a 100vh para ajustar a la altura de la ventana */
-    width: 70%; /* Cambiar a 100vw para ajustar al ancho de la ventana */
+    height: 100%;
+    width: 70%;
     border: 2px solid #3f80a6;
     border-radius: 15px;
     padding: 2rem;
@@ -156,15 +158,15 @@ section{
   grid-template-columns: 100%;
   align-items: center;
   justify-content: center;
-  width: 50%; /* Ajustar el ancho del formulario al contenedor */
-  height: 100%; /* Ajustar la altura del formulario al contenedor */
-  box-sizing: border-box; /* Incluir el padding en las dimensiones del formulario */
-}
+  width: 50%;
+  height: 100%;
+  box-sizing: border-box;
+}*/
 
-.form > h3 {
+/*.form > h3 {
   display: flex;
   justify-content: center;
-}
+}*/
 
 div {
   width: 100%;
@@ -181,21 +183,21 @@ textarea {
   font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 
-.container-archivo{
+/*.container-archivo{
     display: flex;
     justify-content: center;
-}
+}*/
 
-input[type="file"]{
+/*input[type="file"]{
     width: 0.1px;
     height: 0.1px;
     opacity: 0;
     overflow: hidden;
     position: absolute;
     z-index: -1;
-}
+}*/
 
-label[for="archivo"]{
+label{
     font-size: 14px;
     font-weight: 600;
     display: inline-block;
@@ -206,11 +208,11 @@ label[for="archivo"]{
     text-align: center;
 }
 
-label[for="archivo"]:hover{
-    color: #9F19FF;
+label:hover{
+    color: #E817C0;
 }
 
-button {
+/*button {
   margin-top: 2rem;
   border: 0;
   border-radius: 5px;
@@ -218,5 +220,5 @@ button {
   background-color: #9F19FF;
   font-size: 1rem;
   font-weight: bold;
-}
+}*/
 </style>

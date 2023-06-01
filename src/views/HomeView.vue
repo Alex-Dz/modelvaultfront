@@ -2,7 +2,6 @@
     <section>
         <NavComponent/>
         <div class="container">
-            
             <div class="row">
                 <HomeComponent/>
                 <router-view></router-view>
@@ -33,7 +32,7 @@ export default{
 </script>
 
 <style>
-    .container, .row {
+    /*.container, .row {
         overflow: auto;
     }
 
@@ -51,10 +50,10 @@ export default{
         display: flex;
         justify-content: center;
         align-items: center;
-    }
+    }*/
 
-    .row > * {
+    /*.row > * {
         flex-shrink: 0;
-    }
+    }*/
     
 </style>

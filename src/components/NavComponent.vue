@@ -3,14 +3,14 @@
         <section id="menu">
             <a href="/"><img class="logo" src="../assets/modelVLogo.png" alt="Model Vault"></a>
             <ul>
-                <li><a href="#">Categories</a></li>
+<!--                <li><a href="#">Categories</a></li>-->
                 <li><a href="/publications">My Proyects</a></li>
-                <li><a href="#">Discussion</a></li>
+<!--                <li><a href="#">Discussion</a></li>-->
             </ul>
         </section>
         <section id="user">
         <div v-if="isUserInSession">
-            <a id="username" href="/profile">{{username}}</a>
+            <a id="username" class="logIn" href="/profile">{{username}} | profile</a>
             <button id="logout" type="button" @click="logout">Log Out</button>
         </div>
         <div v-if="!isUserInSession">
@@ -41,7 +41,7 @@ export default {
 </script>
 
 <style scoped>
-    nav{
+    /*nav{
         background-color: var(--dark-theme);
         width: 100%;
         height: 8rem;
@@ -72,9 +72,9 @@ export default {
         padding: 0;
         display: flex;
         justify-content: center;
-    }
+    }*/
     
-    a {
+    /*a {
         font-size: large;
         padding: 1rem;
         text-decoration: none;
@@ -108,6 +108,6 @@ export default {
         padding: 1rem;
         margin: 1rem;
         border-radius: 10px;
-    }
+    }*/
 
 </style>

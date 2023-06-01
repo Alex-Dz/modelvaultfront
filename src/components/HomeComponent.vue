@@ -1,59 +1,86 @@
 <template>
-    <div class="container">
+<!--    <div class="container">
         <div class="poster">
             <input class="bar" placeholder="Bienvenido, ¿Qué estas buscando?">
                 <a class="boton-buscar">Buscar</a>
         </div>
-    </div>
+    </div>-->
+    <div class="container py-5">
+            <div class="row mx-auto">
+                <div class="col">
+                    <section class="py-4 py-xl-5">
+                        <div class="container">
+                            <div class="row gx-2 gy-2 row-cols-1 row-cols-md-2 row-cols-xl-3" data-bss-baguettebox="">
+                                <div class="col" v-for="publication in publications" :key="publication.id">
+                                    <a :href="/publication/ + publication.id">
+                                        <img    class="rounded img-fluid d-block w-100 h-75 fit-cover"
+                                                :src="publication.cover.fileData">
+                                        <div class="py-4">
+                                            <h4>{{publication.title}}</h4>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <loading v-model:active="isLoading" :color="'#9F19FF'" :background="'#2D123A'" :is-full-page="true"></loading>
 </template>
 
 <script>
+import axios from 'axios';
+import {getAuthenticationToken} from '@/dataStorage';
+import Loading from 'vue-loading-overlay';
+
+const requestPath = '/api/publication/post'
+
 export default {
-    name: 'HomeComponent'
+
+    name: 'HomeComponent',
+    data(){
+        return{
+            publications: [],
+            isLoading: false,
+        }
+    },
+    components: {
+        Loading
+    },
+    beforeCreate() {
+        this.isLoading = true;
+        axios.get(this.$store.state.backURL + requestPath,
+          {
+              'headers': {
+                  'Authorization' : getAuthenticationToken()
+              }
+          }).then( response => {
+              if(response.status !== 200){
+                  alert("Error de servidor");
+              }else{
+                  console.log(response);
+                  this.publications = response.data;
+              }
+          }).catch( error => {
+              console.log(error);
+              if( error.response.status === 400){
+                  alert(error)
+              }else{
+                  alert("Error de servidor")
+              }
+          }).finally(() => {
+              this.isLoading = false;
+          });
+    }
 }
 </script>
     
 <style>
-    .container {
+    /*.container {
         width: 100%;
         height: 100%;
         display: flex;
         justify-content: center;
-    }
-
-    .poster {
-        background-color: #3f80a6;
-        width: 80%;
-        height: 25rem;
-        margin-top: 5rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .bar {
-        background-color: white;
-        width: 60%;
-        height: 2rem;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border-radius: 15px 0 0 15px;
-        color: #4D4352;
-        border: 0;
-        text-indent: 1rem;
-        font-size: medium;
-    }
-
-    .boton-buscar{
-        background: white;
-        border-left: 1px solid #5555;
-        padding: 6px 1rem 5px 0.8rem;
-        border-radius: 0 15px 15px 0;
-        font-size: large;
-    }
-
-    .boton-buscar:hover{
-        cursor: pointer;
-    }
+    }*/
 </style>
