@@ -1,23 +1,26 @@
 <template>
-    <section class="container">
-        <section class="formulario">
-            <form @submit="loginMethod" >
-                <h3>Nos alegra verte por aquí de nuevo</h3>
-                <div>
-                    <input type="text" id="username" placeholder="Nombre de Usuario" v-model="username" required>
-                </div>
-                <div>
-                    <input type="password" id="password" placeholder="Contraseña" v-model="password" required>
-                </div>
-                <button type="submit">Iniciar Sesión</button>
-            </form>
+    <section>
+        <NavComponent/>
+        <section class="contenedor">
+            <section class="formulario">
+                <form @submit="loginMethod" >
+                    <h3>Nos alegra verte por aquí de nuevo</h3>
+                    <div>
+                        <input type="text" id="username" placeholder="Nombre de Usuario" v-model="username" required>
+                    </div>
+                    <div>
+                        <input type="password" id="password" placeholder="Contraseña" v-model="password" required>
+                    </div>
+                    <button type="submit">Iniciar Sesión</button>
+                </form>
+            </section>
         </section>
     </section>
-    
 </template>
 
 <script>
 import axios from 'axios';
+import NavComponent from '../components/NavComponent.vue'
 import {setAuthenticationToken} from '@/dataStorage';
 import {getAuthenticationToken} from '@/dataStorage';
 import {setAuthenticationBearer} from '@/dataStorage';
@@ -28,6 +31,9 @@ const requestPath = '/api/login';
 
 export default {
     name: 'LoginView',
+    components: {
+        NavComponent
+    },
     data(){
         return{
             username: '',
@@ -75,63 +81,7 @@ export default {
 </script>
 
 <style scoped>
-
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-.formulario {
-  width: 70%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid #3f80a6;
-  border-radius: 15px;
-  padding: 2rem;
-  box-sizing: border-box;
-  margin-top: 3rem;
-}
-
-form {
-  display: grid;
-  grid-template-columns: 100%;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  width: 40%; /* Ajustar el ancho del formulario al contenedor */
-  height: 100%; /* Ajustar la altura del formulario al contenedor */
-  box-sizing: border-box; /* Incluir el padding en las dimensiones del formulario */
-}
-
-form > h3 {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-}
-
-div {
-  width: 100%;
-}
-
-input {
-  width: 100%;
-  border-radius: 5px;
-  padding: 0.5rem;
-  border: 0;
-  margin: 5px 0;
-}
-
-button {
-  margin-top: 2rem;
-  border: 0;
-  border-radius: 5px;
-  padding: 1rem;
-  background-color: #9F19FF;
-  font-size: 1rem;
-  font-weight: bold;
-}
+    div {
+      width: 100%;
+    }
 </style>
