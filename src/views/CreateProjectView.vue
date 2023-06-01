@@ -1,5 +1,6 @@
 <template>
     <section>
+        <NavComponent/>
         <div class="form-container">
             <form class="form" @submit.prevent="submitForm">
                 <h3>Crea tu nueva idea</h3>
@@ -16,7 +17,7 @@
                 </div>
                 <div class="container-archivo">
                     <label for="modelFiles">Adjunta tus archivos</label>
-                    <fileBase64 id="modelFiles" :multiple=true :done="getFiles" :accept="'.stl, .pdf'" ></fileBase64>
+                    <fileBase64 id="modelFiles" :multiple=true :done="getFiles" :accept="'.stl'" ></fileBase64>
                     <span v-show="checkModels">✅</span>
                 </div>
                 <button type="submit">Crear Idea</button>
@@ -32,11 +33,16 @@
 import axios from 'axios';
 import {getAuthenticationToken,getAuthenticatedUsername} from '@/dataStorage';
 import fileBase64 from '../components/vue-file-base64.vue'
+import NavComponent from '../components/NavComponent.vue'
 
 const requestPath = '/api/publication/new'
 
 export default {
     name: 'CreateProjectView',
+    components: {
+        NavComponent,
+        fileBase64
+    },
     beforeCreate( ){
         if( getAuthenticationToken() == null + ' ' + null ) {
             this.$router.push( {name: 'LoginView'} )
@@ -55,7 +61,6 @@ export default {
             preview: undefined,
         }
     },
-    components: { fileBase64 },
     methods: {
         submitForm() {
             /*console.log(getAuthenticationToken());*/

@@ -29,29 +29,3 @@ export default {
     },
 };
 </script>
-
-<style scoped>
-.versions-container {
-    padding: 1em;
-    overflow: auto;
-    height: 100%;
-}
-
-.versions-container h3 {
-    margin-bottom: 1em;
-}
-
-.versions-container ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.versions-container ul li {
-    padding: 0.5em 0;
-    border-bottom: 1px solid #ddd;
-}
-
-.versions-container ul li:last-child {
-    border-bottom: none;
-}
-</style>

@@ -6,7 +6,7 @@
                     <h3>{{publication.title}}</h3>
                     <p>/Etiquetas</p>
                 </div>
-                <button id="edit" class="update" type="button" @click="edit">Edit</button>
+                <button v-if="owner" id="edit" class="boton" type="button" @click="edit">Edit</button>
 <!--                <div class="update">
                     <a href="/actualizar">Update</a>
                 </div>-->
@@ -23,7 +23,7 @@
                     <h5>{{publication.description}}</h5>
                 </div>
                 <div class="bloque-veriones">
-                    <button id="newVersion" class="update" type="button" @click="newVersion">New version</button>
+                    <button v-if="owner" id="newVersion" class="boton" type="button" @click="newVersion">New version</button>
                     <div class="cambios">
                         <downloadFiles :files="publication.version.filesList"></downloadFiles>
                     </div>
@@ -56,7 +56,6 @@
             VueCarousel,
             downloadFiles
         },
-
         props: {
             publication: Object,
             versions: {
@@ -81,14 +80,14 @@
         },
         data() {
             return {
-                file: null,
+                owner: getAuthenticatedUsername() == this.publication.username,
                 check: false
             }
         },
         computed: {
             slides() {
                 return this.images.map(image => 
-                    h('div', { class: 'example-slide' }, [
+                    h('div', { class: '' }, [
                         h('img', { src: image.url, class: 'slide-image' }),
                         image.text ? h('p', image.text) : null
                     ])
@@ -155,29 +154,13 @@
         width: 95%;
     }
 
-    .header{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        height: 10%;
-        border-radius: 10px;
-        margin-top: 4rem;
-    }
-
-    .title{
-        margin-left: 1rem;
-    }
-
     a {
         padding: 0;
         text-decoration: none;
         color: black;
     }
 
-    
-    .update{
+/*    .update{
         width: 10rem;
         height: 2rem;
         display: flex;
@@ -186,98 +169,6 @@
         border-radius: 10px;
         background-color: #9F19FF;
         margin-right: 1rem;
-    }
-
-    .Vista-previa{
-        width: 100%;
-        height: 400px; /* Definir una altura fija */
-        border-radius: 10px;
-        background-color: #9F19FF;
-        margin-top: 1rem;
-        overflow: hidden;
-    }
-    
-    .Vista-previa img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .slide-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-    
-
-    .carrusel {
-        width: 100%;  /* Asegurar que el carrusel ocupe todo el ancho */
-        height: 100%; /* Asegurar que el carrusel ocupe toda la altura */
-        display: flex; /* Esto permitirá centrar la imagen en caso de que sea demasiado pequeña */
-        justify-content: center; /* Centrar horizontalmente */
-        align-items: center; /* Centrar verticalmente */
-    }
-    
-    .example-slide {
-        align-items: center;
-        background-color: #666;
-        color: #999;
-        display: flex;
-        font-size: 1.5rem;
-        justify-content: center;
-        min-height: 10rem;
-        width: 100%; /* Asegurarse de que el slide ocupe todo el ancho */
-        height: 100%; /* Asegurarse de que el slide ocupe toda la altura */
-    }
-    
-    .example-slide img {
-        max-width: 100%;  /* Hacer que la imagen no exceda el ancho del slide */
-        max-height: 100%; /* Hacer que la imagen no exceda la altura del slide */
-        object-fit: contain; /* Esta regla hará que la imagen cubra todo el slide sin estirarse ni aplastarse */
-        border-radius: 10px;
-        background-repeat: no-repeat;
-    }
-    
-
-    .bot{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        width: 100%;
-        height: auto; /* cambiar a auto para adaptar el contenido */
-        border-radius: 10px;
-        margin-top: 1rem;
-        word-break: break-all;
-        padding: 1rem; /* añadir padding para dar espacio a los contenidos */
-    }
-
-    .clasificaión{
-        display: flex;
-        justify-content: start;
-    }
-
-    .detalles{
-        margin-left: 1rem;
-        width: 60%; /* dar espacio al bloque de detalles */
-    }
-
-    .bloque-veriones{
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start; /* alinear el contenido al inicio */
-        align-items: end;
-        width: 40%; /* definir la anchura del bloque de versiones */
-        height: auto; /* cambiar a auto para adaptar el contenido */
-        border-radius: 10px;
-        padding: 1rem; /* añadir padding para dar espacio a los contenidos */
-    }
-
-    .cambios{
-        margin-top: 1rem; /* añadir margen para separar los elementos cambios */
-        margin-right: 1rem;
-        background-color: aliceblue;
-        width: 100%; /* hacer que los cambios tomen todo el ancho disponible */
-        border-radius: 10px;
-    }
+    }*/
 
 </style>

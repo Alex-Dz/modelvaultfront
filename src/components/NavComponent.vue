@@ -3,14 +3,14 @@
         <section id="menu">
             <a href="/"><img class="logo" src="../assets/modelVLogo.png" alt="Model Vault"></a>
             <ul>
-                <li><a href="#">Categories</a></li>
+<!--                <li><a href="#">Categories</a></li>-->
                 <li><a href="/publications">My Proyects</a></li>
-                <li><a href="#">Discussion</a></li>
+<!--                <li><a href="#">Discussion</a></li>-->
             </ul>
         </section>
         <section id="user">
         <div v-if="isUserInSession">
-            <a id="username" href="/profile">{{username}}</a>
+            <a id="username" class="logIn" href="/profile">{{username}} | profile</a>
             <button id="logout" type="button" @click="logout">Log Out</button>
         </div>
         <div v-if="!isUserInSession">
@@ -41,8 +41,8 @@ export default {
 </script>
 
 <style scoped>
-    nav{
-        background-color: #3f80a6;
+    /*nav{
+        background-color: var(--dark-theme);
         width: 100%;
         height: 8rem;
         display: flex;
@@ -51,6 +51,7 @@ export default {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4);
     }
     .logo{
         width: 50px;
@@ -62,7 +63,7 @@ export default {
         display: flex;
         align-items: center;
         margin: 0 0 0 2rem;
-        color: white;
+        color: var(--blanco);
     }
 
     ul {
@@ -71,13 +72,13 @@ export default {
         padding: 0;
         display: flex;
         justify-content: center;
-    }
+    }*/
     
-    a {
+    /*a {
         font-size: large;
         padding: 1rem;
         text-decoration: none;
-        color: black;
+        color: var(--blanco);
     }
 
     a:hover{
@@ -89,23 +90,24 @@ export default {
     }
 
     #logIn{
-        background-color: white;
+        background-color: var(--blanco);
         padding: 1rem;
         margin: 1rem;
         border-radius: 10px;
+        color: var(--negro);
     }
 
     #signUp{
-        background-color: #9F19FF;
+        background-color: var(--secundario);
         padding: 1rem;
         border-radius: 10px;
     }
 
     #logout{
-        background-color: white;
+        background-color: var(--blanco);
         padding: 1rem;
         margin: 1rem;
         border-radius: 10px;
-    }
+    }*/
 
 </style>

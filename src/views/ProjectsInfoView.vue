@@ -1,14 +1,14 @@
 <template>
     <section>
-        <div>
-            <ProjectsInfo :publication="publication" :versions="versions" :images="images"/>
-        </div>
+        <NavComponent/>
+        <ProjectsInfo :publication="publication" :versions="versions" :images="images"/>
     </section>
 </template>
 
 <script>
 import axios from 'axios';
 import {getAuthenticationToken} from '@/dataStorage';
+import NavComponent from '../components/NavComponent.vue'
 import ProjectsInfo from '@/components/infoComponent.vue';
 
 const requestPath = '/api/publication/';
@@ -91,7 +91,8 @@ export default {
         }
     },
     components: {
-        ProjectsInfo
+        ProjectsInfo,
+        NavComponent
     },
 }
 
@@ -99,18 +100,18 @@ export default {
 
 <style scoped>
 
-section{
+/*section{
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
-}
+}*/
 
-div{
+/*div{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
     width: 100%;
-}
+}*/
 </style>

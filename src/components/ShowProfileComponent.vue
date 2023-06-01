@@ -1,52 +1,55 @@
 <template>
-	<section class="clean-block about-us">
-		<div class="row" style="margin-right: 0px;margin-left: 0px;">
-			<div class="col text-center">
-				<h2 class="text-info">{{name}}</h2>
+	<section class="contenedor">
+		<section class="form">
+			<div>
+				<h2 class="text-info text-center">{{name}}</h2>
 			</div>
-		</div>
-		<div class="row justify-content-center" style="margin-right: 0px;margin-left: 0px;">
-			<div class="col-sm-6 col-lg-4" style="padding-right: 0px;padding-left: 0px;">
-				<div class="card clean-card text-center">
-					<div class="card-body info">
-						<div class="row" style="margin-top: -24px;">
-							<div class="col-md-12" style="margin-top: 22px;">
-								<div class="row">
-									<div class="col">
-										<p class="labels"><strong>Usuario</strong></p>
-									</div>
-									<div class="col">
-										<p class="labels">{{username}}</p>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col">
-										<p class="labels"><strong>Nombre</strong></p>
-									</div>
-									<div class="col">
-										<p class="labels">{{name}}</p>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col">
-										<p class="labels"><strong>E-mail</strong></p>
-									</div>
-									<div class="col">
-										<p class="labels">{{email}}</p>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-12">
-										<a class="btn btn-success" role="button" href="/profile/edit">
-											<i class="fas fa-pencil-alt"></i>&nbsp;Editar</a>
-									</div>
+			<div class="text-center">
+				<div class="row">
+					<div class="col">
+						<p class="labels text"><strong>Usuario</strong></p>
+					</div>
+					<div class="col">
+						<p class="labels text">{{username}}</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<p class="labels text"><strong>Nombre</strong></p>
+					</div>
+					<div class="col">
+						<p class="labels text">{{name}}</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<p class="labels text"><strong>E-mail</strong></p>
+					</div>
+					<div class="col">
+						<p class="labels text">{{email}}</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<a class="boton" role="button" href="/profile/edit">
+							<i class="fas fa-pencil-alt"></i>&nbsp;Editar</a>
+					</div>
+				</div>
+			</div>
+<!--			<div class="row" style="">
+				<div class="col-sm-6 col-lg-4" style="">
+					<div class="card clean-card text-center">
+						<div class="card-body">
+							<div class="row" style="">
+								<div class="col-md-12" style="margin-top: 22px;">
+
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
+			</div>-->
+		</section>
 	</section>
 </template>
 
@@ -92,3 +95,17 @@ export default {
 	},
 };
 </script>
+<style scoped>
+.form {
+	width: 70%;
+	height: 100%;
+/*	display: flex;*/
+	justify-content: center;
+	align-items: center;
+	border: 2px solid #3f80a6;
+	border-radius: 15px;
+	padding: 2rem;
+	box-sizing: border-box;
+	margin-top: 3rem;
+}
+</style>
