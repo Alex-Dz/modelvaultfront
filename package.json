@@ -10,6 +10,7 @@
     "heroku-postbuild": "npm install && npm run build",
     "start": "node --optimize_for_size --max_old_space_size=2560 server.js",
     "build": "vue-cli-service build",
+    "serve": "vue-cli-service serve",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -32,7 +33,7 @@
     "vue-3d-model": "^1.4.1",
     "vue-carousel": "^0.18.0",
     "vue-loading-overlay": "6.0",
-    "vue3-carousel": "^0.3.1"
+    "vue3-carousel": "^0.3.1",
     "vue-router": "^4.1.6",
     "vuex": "^4.1.0"
   },
