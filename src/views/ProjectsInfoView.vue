@@ -18,61 +18,62 @@ const requestPathVersions2 = '/version/all';
 export default {
     name: 'ProjectsInfoView',
     beforeCreate( ){
-        if( getAuthenticationToken() == null + ' ' + null ) {
+        console.log(this.$store.state.backURL + requestPath + this.$route.params.id)
+        axios.get(this.$store.state.backURL + requestPath + this.$route.params.id,
+          {
+              'headers': {
+                  'Authorization' : getAuthenticationToken()
+              }
+          }).then( response => {
+              if(response.status !== 202){
+                  alert("Error de servidor");
+              }else{
+                  /*console.log(response);*/
+                  this.publication = response.data;
+                  this.images = [];
+                  for (let i = 0; i < response.data.version.imagesList.length; i++) {
+                      this.images.push({
+                          text: response.data.version.imagesList[i].fileName,
+                          url: response.data.version.imagesList[i].fileData
+                      })
+                  }
+                  /*console.log(this.images);*/
+              }
+          }).catch( error => {
+              console.log(error);
+              if( error.response.status === 400){
+                  alert(error)
+              }else{
+                  alert("Error de servidor")
+              }
+          });
+        console.log(this.$store.state.backURL + requestPathVersions1 + this.$route.params.id + requestPathVersions2);
+        axios.get(this.$store.state.backURL + requestPathVersions1 + this.$route.params.id + requestPathVersions2,
+          {
+              'headers': {
+                  'Authorization' : getAuthenticationToken()
+              }
+          }).then( response => {
+              if(response.status !== 202){
+                  alert("Error de servidor");
+              }else{
+                  this.versions = response.data;
+                  /*console.log('versions--> ' + JSON.stringify(this.versions));*/
+              }
+          }).catch( error => {
+              console.log(error);
+              if( error.response.status === 400){
+                  alert(error)
+              }else{
+                  alert("Error de servidor")
+              }
+          });
+        /*if( getAuthenticationToken() == null + ' ' + null ) {
             this.$router.push( {name: 'LoginView'} )
             console.log('need to login: redirect to login');
         } else {
-            console.log(this.$store.state.backURL + requestPath + this.$route.params.id)
-            axios.get(this.$store.state.backURL + requestPath + this.$route.params.id,
-              {
-                  'headers': {
-                      'Authorization' : getAuthenticationToken()
-                  }
-              }).then( response => {
-                  if(response.status !== 202){
-                      alert("Error de servidor");
-                  }else{
-                      /*console.log(response);*/
-                      this.publication = response.data;
-                      this.images = [];
-                      for (let i = 0; i < response.data.version.imagesList.length; i++) {
-                          this.images.push({
-                              text: response.data.version.imagesList[i].fileName,
-                              url: response.data.version.imagesList[i].fileData
-                          })
-                      }
-                      /*console.log(this.images);*/
-                  }
-              }).catch( error => {
-                  console.log(error);
-                  if( error.response.status === 400){
-                      alert(error)
-                  }else{
-                      alert("Error de servidor")
-                  }
-              });
-            console.log(this.$store.state.backURL + requestPathVersions1 + this.$route.params.id + requestPathVersions2);
-            axios.get(this.$store.state.backURL + requestPathVersions1 + this.$route.params.id + requestPathVersions2,
-              {
-                  'headers': {
-                      'Authorization' : getAuthenticationToken()
-                  }
-              }).then( response => {
-                  if(response.status !== 202){
-                      alert("Error de servidor");
-                  }else{
-                      this.versions = response.data;
-                      /*console.log('versions--> ' + JSON.stringify(this.versions));*/
-                  }
-              }).catch( error => {
-                  console.log(error);
-                  if( error.response.status === 400){
-                      alert(error)
-                  }else{
-                      alert("Error de servidor")
-                  }
-              });
-        }
+
+        }*/
     },
     data(){
         return{
