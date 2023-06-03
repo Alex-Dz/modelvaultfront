@@ -6,7 +6,7 @@
                     <h3>{{publication.title}}</h3>
 <!--                    <p>/Etiquetas</p>-->
                 </div>
-                <button v-if="owner == true" id="edit" class="boton" type="button" @click="edit">Edit</button>
+                <button v-if="owner == true" id="edit" class="boton" type="button" @click="edit">Editar</button>
             </div>
             <div class="Vista-previa">
                 <VueCarousel class="carrusel" :data="slides" />
@@ -20,7 +20,7 @@
                     <h5>{{publication.description}}</h5>
                 </div>
                 <div class="bloque-veriones">
-                    <button v-if="owner == true" id="newVersion" class="boton" type="button" @click="newVersion">New version</button>
+                    <button v-if="owner == true" id="newVersion" class="boton" type="button" @click="newVersion">Nueva versión</button>
                     <div class="cambios">
                         <downloadFiles :files="publication.version.filesList"></downloadFiles>
                     </div>
