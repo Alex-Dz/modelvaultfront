@@ -1,6 +1,6 @@
 <template>
     <section>
-        <NavComponent/>
+<!--        <NavComponent/>-->
         <div class="container">
             <div class="crear-container">
                 <a href="/crear-proyecto" class="boton">Crea Proyecto</a>
@@ -18,7 +18,7 @@
 <script>
 import axios from 'axios';
 import {getAuthenticationToken} from '@/dataStorage';
-import NavComponent from '../components/NavComponent.vue'
+/*import NavComponent from '../components/NavComponent.vue'*/
 import Card from '@/components/CardComponet.vue';
 
 import Loading from 'vue-loading-overlay';
@@ -37,7 +37,7 @@ export default {
     components: {
         Card,
         Loading,
-        NavComponent
+        /*NavComponent*/
     },
     beforeCreate(){
         if( getAuthenticationToken() == null + ' ' + null ) {

@@ -1,5 +1,5 @@
 <template>
-	<NavComponent/>
+<!--	<NavComponent/>-->
     <section>
         <div class="form-container">
             <form class="form" @submit.prevent="submitForm">
@@ -33,7 +33,7 @@
 import axios from 'axios';
 import {getAuthenticationToken,getAuthenticatedUsername} from '@/dataStorage';
 import fileBase64 from '../components/vue-file-base64.vue'
-import NavComponent from '../components/NavComponent.vue'
+/*import NavComponent from '../components/NavComponent.vue'*/
 
 const requestGetPath = '/api/publication/';
 const requestPostPath = '/api/publication/new-version';
@@ -42,7 +42,7 @@ export default {
 	name: 'CreateVersionView',
 	components: {
 		fileBase64,
-		NavComponent,
+		/*NavComponent,*/
 	},
 	beforeCreate( ){
 		if( getAuthenticationToken() == null + ' ' + null ) {

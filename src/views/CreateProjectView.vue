@@ -1,6 +1,6 @@
 <template>
     <section>
-        <NavComponent/>
+<!--        <NavComponent/>-->
         <div class="form-container">
             <form class="form" @submit.prevent="submitForm">
                 <h3>Crea tu nueva idea</h3>
@@ -33,14 +33,14 @@
 import axios from 'axios';
 import {getAuthenticationToken,getAuthenticatedUsername} from '@/dataStorage';
 import fileBase64 from '../components/vue-file-base64.vue'
-import NavComponent from '../components/NavComponent.vue'
+/*import NavComponent from '../components/NavComponent.vue'*/
 
 const requestPath = '/api/publication/new'
 
 export default {
     name: 'CreateProjectView',
     components: {
-        NavComponent,
+        /*NavComponent,*/
         fileBase64
     },
     beforeCreate( ){

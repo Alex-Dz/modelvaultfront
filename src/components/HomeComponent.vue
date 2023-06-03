@@ -5,16 +5,18 @@
                 <a class="boton-buscar">Buscar</a>
         </div>
     </div>-->
-    <div class="container py-5">
+    <div class="container py-3">
             <div class="row mx-auto">
                 <div class="col">
-                    <section class="py-4 py-xl-5">
+                    <section class="py-2 py-xl-3">
                         <div class="container">
                             <div class="row gx-2 gy-2 row-cols-1 row-cols-md-2 row-cols-xl-3" data-bss-baguettebox="">
                                 <div class="col" v-for="publication in publications" :key="publication.id">
                                     <a :href="/publication/ + publication.id">
-                                        <img    class="rounded img-fluid d-block w-100 h-75 fit-cover"
+                                        <div class="home-card">
+                                            <img class="rounded fit-cover img-fluid d-block"
                                                 :src="publication.cover.fileData">
+                                        </div>
                                         <div class="py-4">
                                             <h4>{{publication.title}}</h4>
                                         </div>

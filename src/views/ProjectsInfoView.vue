@@ -1,6 +1,6 @@
 <template>
     <section>
-        <NavComponent/>
+<!--        <NavComponent/>-->
         <ProjectsInfo :publication="publication" :versions="versions" :images="images"/>
     </section>
 </template>
@@ -8,7 +8,7 @@
 <script>
 import axios from 'axios';
 import {getAuthenticationToken} from '@/dataStorage';
-import NavComponent from '../components/NavComponent.vue'
+/*import NavComponent from '../components/NavComponent.vue'*/
 import ProjectsInfo from '@/components/infoComponent.vue';
 
 const requestPath = '/api/publication/';
@@ -93,7 +93,7 @@ export default {
     },
     components: {
         ProjectsInfo,
-        NavComponent
+        /*NavComponent*/
     },
 }
 
