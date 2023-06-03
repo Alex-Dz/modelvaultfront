@@ -9,7 +9,7 @@
                             <h6>Fecha de modificación {{publication.lastUpdatedDate}}</h6>
                         </div>           
                         <div class="derecha">
-                            <h4>/commit</h4>
+<!--                            <h4>/commit</h4>-->
                             <img class="icon" src="../assets/settings-gear-combination-svgrepo-com.svg" alt="">
                         </div>
                     </div>

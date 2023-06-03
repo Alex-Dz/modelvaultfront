@@ -2,7 +2,7 @@
 	<section class="contenedor">
 		<section class="form">
 			<div>
-				<h2 class="text-info text-center">{{name}}</h2>
+				<h2 class="text-info text-center">Información del usuario</h2>
 			</div>
 			<div class="text-center">
 				<div class="row">
@@ -29,26 +29,13 @@
 						<p class="labels text">{{email}}</p>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-md-12">
+				<div class="container">
+					<div class="col-md-12 text-center">
 						<a class="boton" role="button" href="/profile/edit">
 							<i class="fas fa-pencil-alt"></i>&nbsp;Editar</a>
 					</div>
 				</div>
 			</div>
-<!--			<div class="row" style="">
-				<div class="col-sm-6 col-lg-4" style="">
-					<div class="card clean-card text-center">
-						<div class="card-body">
-							<div class="row" style="">
-								<div class="col-md-12" style="margin-top: 22px;">
-
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>-->
 		</section>
 	</section>
 </template>

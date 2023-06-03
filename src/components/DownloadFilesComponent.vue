@@ -1,6 +1,6 @@
 <template>
     <div class="versions-container">
-        <h3>Download</h3>
+        <h3>Descargas</h3>
         <ul>
             <li v-for="file in files" :key="file">
                 <div>

@@ -2,7 +2,7 @@
 	<section class="contenedor">
 		<section class="form">
 			<div>
-				<h2 class="text-info text-center">Nombre Completo</h2>
+				<h2 class="text-info text-center">Editar</h2>
 			</div>
 			<div class="text-center">
 				<form @submit="submitMethod" >
@@ -34,7 +34,7 @@
 							</div>
 							<div class="row">
 								<div class="col-md-12">
-									<button type="submit">Guardar</button>
+									<button class="boton" type="submit">Guardar</button>
 								</div>
 							</div>
 						</div>

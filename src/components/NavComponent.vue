@@ -3,19 +3,19 @@
         <section id="menu">
             <a href="/"><img class="logo" src="../assets/modelVLogo.png" alt="Model Vault"></a>
             <ul>
-<!--                <li><a href="#">Categories</a></li>-->
-                <li><a href="/publications">My Proyects</a></li>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/publications">Mis proyectos</a></li>
 <!--                <li><a href="#">Discussion</a></li>-->
             </ul>
         </section>
         <section id="user">
         <div v-if="isUserInSession">
-            <a id="username" class="logIn" href="/profile">{{username}} | profile</a>
-            <button id="logout" type="button" @click="logout">Log Out</button>
+            <a id="username" class="logIn" href="/profile">{{username}} | Perfil</a>
+            <button id="logout" type="button" @click="logout">Cerrar sesión</button>
         </div>
         <div v-if="!isUserInSession">
-            <a id="logIn" href="/iniciar-sesion">Log In</a>
-            <a id="signUp" href="/registro">Sign Up</a>
+            <a id="logIn" href="/iniciar-sesion">Iniciar sesión</a>
+            <a id="signUp" href="/registro">Registrarse</a>
         </div>
         </section>
     </nav>
