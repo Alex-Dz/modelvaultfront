@@ -1,6 +1,6 @@
 <template>
     <section>
-        <NavComponent/>
+<!--        <NavComponent/>-->
         <section class="contenedor">
             <section class="formulario">
                 <form @submit="signUpMethod" >
@@ -29,14 +29,14 @@
 
 <script>
 import axios from 'axios'
-import NavComponent from '../components/NavComponent.vue'
+/*import NavComponent from '../components/NavComponent.vue'*/
 
 const requestPath = '/api/sign-up';
 
 export default {
     name: 'SignUp',
     components: {
-        NavComponent
+        /*NavComponent*/
     },
     data(){
         return{

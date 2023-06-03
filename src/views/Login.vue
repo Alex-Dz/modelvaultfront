@@ -1,6 +1,6 @@
 <template>
     <section>
-        <NavComponent/>
+<!--        <NavComponent/>-->
         <section class="contenedor">
             <section class="formulario">
                 <form @submit="loginMethod" >
@@ -20,7 +20,7 @@
 
 <script>
 import axios from 'axios';
-import NavComponent from '../components/NavComponent.vue'
+/*import NavComponent from '../components/NavComponent.vue'*/
 import {setAuthenticationToken} from '@/dataStorage';
 import {getAuthenticationToken} from '@/dataStorage';
 import {setAuthenticationBearer} from '@/dataStorage';
@@ -32,7 +32,7 @@ const requestPath = '/api/login';
 export default {
     name: 'LoginView',
     components: {
-        NavComponent
+        /*NavComponent*/
     },
     data(){
         return{

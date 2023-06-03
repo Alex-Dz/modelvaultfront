@@ -8,6 +8,17 @@
 	align-items: center;
 }
 
+.fit-cover{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.home-card {
+	width: 20rem;
+	height: 20rem;
+}
+
 .bar {
 	background-color: white;
 	width: 60%;
@@ -40,10 +51,32 @@
 	padding: 0;
 }
 
-html, body{
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+body{
     background-color: var(--dark-theme);
+	margin-bottom: 11rem;
     /*width: 100%;
     height: 100%;*/
+}
+
+hr {
+	margin: 0.1rem 0rem;
+}
+
+.font-light {
+	font-size: 0.8rem;
+}
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 10.5rem;
+	line-height: 0.5;
 }
 
 #app{

@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 import '@/assets/colors.css';
 import '@/assets/styles.css';
+import '@/assets/bold-and-dark.js'
 
 library.add(faStar)
 

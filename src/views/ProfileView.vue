@@ -1,6 +1,6 @@
 <template>
 	<section>
-		<NavComponent/>
+<!--		<NavComponent/>-->
 		<div class="row mt-5">
 			<router-view></router-view>
 		</div>
@@ -9,12 +9,12 @@
 
 <script>
 import {getAuthenticationToken} from '@/dataStorage';
-import NavComponent from '../components/NavComponent.vue'
+/*import NavComponent from '../components/NavComponent.vue'*/
 
 export default{
 	name: "ProfileView",
 	components: {
-		NavComponent
+		/*NavComponent*/
 	},
 	beforeCreate( ){
 		if( getAuthenticationToken() == null + ' ' + null  ) {

@@ -1,6 +1,6 @@
 <template>
     <section>
-        <NavComponent/>
+<!--        <NavComponent/>-->
         <div class="container">
             <div class="row">
                 <HomeComponent/>
@@ -8,19 +8,21 @@
             </div>
         </div>
     </section>
-    
+<!--    <FooterComponent/>-->
 </template>
 
 <script>
 import {getAuthenticationToken} from '@/dataStorage';
 import HomeComponent from '../components/HomeComponent.vue'
-import NavComponent from '../components/NavComponent.vue'
+/*import NavComponent from '../components/NavComponent.vue'*/
+/*import FooterComponent from '../components/FooterComponent.vue'*/
 
 export default{
     name: "HomeView",
     components: { 
         HomeComponent,
-        NavComponent,
+        /*NavComponent,*/
+        /*FooterComponent*/
     },
     beforeCreate( ){
         if( getAuthenticationToken() == null + ' ' + null ) {
