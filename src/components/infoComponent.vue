@@ -4,12 +4,9 @@
             <div class="header">
                 <div class="title">
                     <h3>{{publication.title}}</h3>
-                    <p>/Etiquetas</p>
+<!--                    <p>/Etiquetas</p>-->
                 </div>
-                <button v-if="owner" id="edit" class="boton" type="button" @click="edit">Edit</button>
-<!--                <div class="update">
-                    <a href="/actualizar">Update</a>
-                </div>-->
+                <button v-if="owner == true" id="edit" class="boton" type="button" @click="edit">Editar</button>
             </div>
             <div class="Vista-previa">
                 <VueCarousel class="carrusel" :data="slides" />
@@ -23,7 +20,7 @@
                     <h5>{{publication.description}}</h5>
                 </div>
                 <div class="bloque-veriones">
-                    <button v-if="owner" id="newVersion" class="boton" type="button" @click="newVersion">New version</button>
+                    <button v-if="owner == true" id="newVersion" class="boton" type="button" @click="newVersion">Nueva versión</button>
                     <div class="cambios">
                         <downloadFiles :files="publication.version.filesList"></downloadFiles>
                     </div>
@@ -68,19 +65,18 @@
                     { text: 'Slide 1', url: 'https://via.placeholder.com/150' },
                     { text: 'Slide 2', url: 'https://via.placeholder.com/150' }
                 ]
+            },
+            owner: {
+                type: Boolean,
+                default: false
             }
-
         },
         beforeCreate() {
-            if( getAuthenticationToken() == null + ' ' + null ) {
-                this.$router.push( {name: 'LoginView'} )
-                console.log('need to login: redirect to login');
-            }
-            console.log(this.versions);
+            /*console.log(this.versions);*/
+            /*console.log(this.owner);*/
         },
         data() {
             return {
-                owner: getAuthenticatedUsername() == this.publication.username,
                 check: false
             }
         },

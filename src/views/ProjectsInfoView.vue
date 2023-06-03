@@ -1,13 +1,13 @@
 <template>
     <section>
 <!--        <NavComponent/>-->
-        <ProjectsInfo :publication="publication" :versions="versions" :images="images"/>
+        <ProjectsInfo :publication="publication" :versions="versions" :images="images" :owner="owner"/>
     </section>
 </template>
 
 <script>
 import axios from 'axios';
-import {getAuthenticationToken} from '@/dataStorage';
+import {getAuthenticationToken, getAuthenticatedUsername} from '@/dataStorage';
 /*import NavComponent from '../components/NavComponent.vue'*/
 import ProjectsInfo from '@/components/infoComponent.vue';
 
@@ -37,6 +37,7 @@ export default {
                           url: response.data.version.imagesList[i].fileData
                       })
                   }
+                  this.owner = getAuthenticatedUsername() == null || getAuthenticatedUsername() != this.publication.username ? false : true;
                   /*console.log(this.images);*/
               }
           }).catch( error => {
@@ -68,12 +69,6 @@ export default {
                   alert("Error de servidor")
               }
           });
-        /*if( getAuthenticationToken() == null + ' ' + null ) {
-            this.$router.push( {name: 'LoginView'} )
-            console.log('need to login: redirect to login');
-        } else {
-
-        }*/
     },
     data(){
         return{
@@ -88,6 +83,10 @@ export default {
                     { text: 'Slide 1', url: 'https://via.placeholder.com/150' },
                     { text: 'Slide 2', url: 'https://via.placeholder.com/150' }
                 ]
+            },
+            owner: {
+                type: Boolean,
+                default: false
             }
         }
     },

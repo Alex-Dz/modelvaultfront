@@ -3,7 +3,8 @@
 <!--        <NavComponent/>-->
         <div class="container">
             <div class="crear-container">
-                <a href="/crear-proyecto" class="boton">Crea Proyecto</a>
+<!--                <a href="/crear-proyecto" class="boton">Crea Proyecto</a>-->
+                <button id="createButton" class="boton" type="button" @click="newProject">Nuevo proyecto</button>
             </div>
             <Card   v-for="publication in publications"
                     :key="publication.id"
@@ -69,6 +70,13 @@ export default {
               });
         }
     },
+    methods: {
+        newProject() {
+            let url = '/crear-proyecto';
+            console.log(url);
+            this.$router.push({path: url});
+        }
+    }
 };
 
 </script>

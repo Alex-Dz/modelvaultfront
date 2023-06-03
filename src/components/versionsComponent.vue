@@ -1,6 +1,6 @@
 <template>
     <div class="versions-container">
-        <h3>Versions</h3>
+        <h3>Versiones</h3>
         <ul>
             <li v-for="(version, index) in versions" :key="index">
                 <p>version {{ version.versionNumber }}</p>
