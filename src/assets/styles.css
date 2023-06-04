@@ -45,6 +45,18 @@
 	cursor: pointer;
 }
 
+.deleteButton{
+	width: 10rem;
+	/*height: 2rem;*/
+	/*display: flex;*/
+	justify-content: center;
+	align-items: center;
+	border-radius: 10px;
+	background-color: var(--naranja);
+	margin: 1rem 1rem;
+	color: black;
+}
+
 *{
 	box-sizing: border-box;
 	margin: 0;
