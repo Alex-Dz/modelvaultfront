@@ -18,7 +18,7 @@
                     <input class="archivo" v-on:change="onFileChange" id="archivo" type="file">
                     <span v-show="check">✅</span>
                 </div>-->
-                <div>
+                <div class="row justify-content-center">
                     <button class="boton" type="submit">Actualizar Idea</button>
                     <button id="deleteButton" class="btn btn-danger deleteButton" type="button" @click="deletePublication">Eliminar</button>
                 </div>

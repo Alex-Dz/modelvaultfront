@@ -4,7 +4,7 @@ import { createStore } from 'vuex';
 export const store =  createStore({
   state () {
     return {
-      backURL: 'https://modelvault-api.herokuapp.com'
+      backURL: 'http://190.24.17.213:8081'
     }
   }
 })
