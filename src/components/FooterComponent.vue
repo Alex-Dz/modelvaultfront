@@ -89,5 +89,9 @@ a {
     cursor: pointer;
     color: var(--blanco);
 	font-size: 0.8rem;
+    padding-top: 0.8rem;
+    padding-bottom: 0.5rem;
+    width: 100%;
+    border-bottom: 1px solid var(--blanco);
  }
 </style>
