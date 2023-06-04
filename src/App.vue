@@ -1,7 +1,7 @@
 <template>
-   <Nav/>
-  <router-view/>
+  <Nav/>
   <FooterComponent/>
+  <router-view/>
 </template>
 
 <script>
@@ -19,6 +19,7 @@ import FooterComponent from './components/FooterComponent.vue';
 
 <style>
 
+  
     
   /*html, body{
     !*background-color: var(--dark-theme);*!

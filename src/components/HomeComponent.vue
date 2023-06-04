@@ -12,7 +12,7 @@
                         <div class="container">
                             <div class="row gx-2 gy-2 row-cols-1 row-cols-md-2 row-cols-xl-3" data-bss-baguettebox="">
                                 <div class="col" v-for="publication in publications" :key="publication.id">
-                                    <a :href="/publication/ + publication.id">
+                                    <a :href="'/publication/' + publication.id + '?version=last'">
                                         <div class="home-card">
                                             <img class="rounded fit-cover img-fluid d-block"
                                                 :src="publication.cover.fileData">

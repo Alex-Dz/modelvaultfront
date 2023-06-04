@@ -16,7 +16,7 @@
                     <div class="clasificaión">
                         <starRating @rated="getStars" :rating="publication.score"/>
                     </div>
-                    <p>{{publication.username}}</p>
+                    <p>{{publication.username}} (Versión {{publication.version.versionNumber}})</p>
                     <h5>{{publication.description}}</h5>
                 </div>
                 <div class="bloque-veriones">
