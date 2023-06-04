@@ -18,8 +18,12 @@ const requestPathVersions2 = '/version/all';
 export default {
     name: 'ProjectsInfoView',
     beforeCreate( ){
-        console.log(this.$store.state.backURL + requestPath + this.$route.params.id)
-        axios.get(this.$store.state.backURL + requestPath + this.$route.params.id,
+        let getPublicationURL = this.$store.state.backURL + requestPath + this.$route.params.id;
+        if (this.$route.query.version != undefined) {
+            getPublicationURL = getPublicationURL + '?version='  + this.$route.query.version
+        }
+        console.log(getPublicationURL)
+        axios.get(getPublicationURL,
           {
               'headers': {
                   'Authorization' : getAuthenticationToken()
