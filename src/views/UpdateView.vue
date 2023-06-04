@@ -18,8 +18,10 @@
                     <input class="archivo" v-on:change="onFileChange" id="archivo" type="file">
                     <span v-show="check">✅</span>
                 </div>-->
-                <button type="submit">Actualizar Idea</button>
-<!--                <button id="deleteButton" class="btn btn-danger" type="button" @click="edit">Delete</button>-->
+                <div>
+                    <button class="boton" type="submit">Actualizar Idea</button>
+                    <button id="deleteButton" class="btn btn-danger deleteButton" type="button" @click="deletePublication">Eliminar</button>
+                </div>
             </form>
         </div>
 <!--        <div class="cambios">
@@ -36,6 +38,7 @@ import {getAuthenticationToken, getAuthenticatedUsername} from '@/dataStorage';
 
 const requestPath = '/api/publication/';
 const requestPathEdit = '/api/publication/edit'
+const requestPathDelete = '/api/publication/delete/'
 
 export default {
     name: 'UpdateView',
@@ -105,6 +108,29 @@ export default {
                    }else{
                        /*console.log(response);*/
                        this.$router.push( {name: 'ProjectsInfoView', params: {id: response.data.id}} )
+                   }
+               }).catch( error => {
+                   console.log(error);
+                   if( error.response.status === 400){
+                       alert(error)
+                   }else{
+                       alert("Error de servidor")
+                   }
+               });
+        },
+        deletePublication() {
+            console.log(this.$store.state.backURL + requestPathDelete + this.$route.params.id);
+            axios.post(this.$store.state.backURL + requestPathDelete + this.$route.params.id,
+               {
+                   'headers': {
+                       'Authorization' : getAuthenticationToken()
+                   }
+               }).then( response => {
+                   if(response.status !== 202){
+                       alert("Error de servidor");
+                   }else{
+                       /*console.log(response);*/
+                       this.$router.push( {name: 'HomeView'} )
                    }
                }).catch( error => {
                    console.log(error);
