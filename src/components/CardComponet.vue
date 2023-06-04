@@ -6,7 +6,7 @@
                     <div class="head">
                         <div class="izquierda">
                             <h2>{{publication.title}}</h2>
-                            <h6>Fecha de modificación {{publication.lastUpdatedDate}}</h6>
+                            <h6>Fecha de modificación {{formatDate(publication.lastUpdatedDate)}}</h6>
                         </div>           
                         <div class="derecha">
 <!--                            <h4>/commit</h4>-->
@@ -36,8 +36,14 @@
         },
         methods: {
             redirectToProjectsInfo(){
-                this.$router.push('/publication/' + this.publication.id);
+                this.$router.push('/publication/' + this.publication.id + '?version=last');
             },
+            formatDate(value) {
+                const date = new Date(String(value));
+                date.setHours(0, 0, 0, 0);
+                var result = '' + date.getDate() + '/' + ((date.getMonth() + 1) > 9 ? '' : '0') + (date.getMonth() + 1) + (date.getDate() > 9 ? '' : '0') + '/' + date.getFullYear();
+                return result;
+            }
         },
     }
 </script>
