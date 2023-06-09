@@ -21,7 +21,7 @@
                         <input type="email" id="email" placeholder="E-mail" v-model="email" required>
                     </div>
                     <div class="terms">
-                        <input type="checkbox">
+                        <input type="checkbox" v-model="check">
                         <p>Acepta nuestros <span @click="openModal">Terminos y Condiciones</span>.</p>
                     </div>
                     <button type="submit">Registrarse</button>
@@ -58,6 +58,7 @@ export default {
             name: '',
             email: '',
             isVisible: false,
+            check: false
         }
     },
     methods:{
@@ -65,6 +66,12 @@ export default {
             if( this.password !== this.repeatPassword){
                 console.log('passwords not match');
                 alert('passwords not match');
+                event.preventDefault();
+                return;
+            }
+            if( this.check != true){
+                console.log('accept terms & conditions');
+                alert('accept terms & conditions');
                 event.preventDefault();
                 return;
             }
