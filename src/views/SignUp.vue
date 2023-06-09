@@ -64,6 +64,7 @@ export default {
         signUpMethod( event ){
             if( this.password !== this.repeatPassword){
                 console.log('passwords not match');
+                alert('passwords not match');
                 event.preventDefault();
                 return;
             }
