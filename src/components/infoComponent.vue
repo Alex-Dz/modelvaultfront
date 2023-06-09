@@ -13,7 +13,7 @@
             </div>
             <div class="bot">
                 <div class="detalles">
-                    <div class="clasificaión">
+                    <div v-if="isUserInSession" class="clasificaión">
                         <starRating @rated="getStars" :rating="publication.score"/>
                     </div>
                     <p>{{publication.username}} (Versión {{publication.version.versionNumber}})</p>
@@ -77,6 +77,7 @@
         },
         data() {
             return {
+                isUserInSession: getAuthenticatedUsername() != null ? true : false,
                 check: false
             }
         },
@@ -119,11 +120,11 @@
                        }
                    }).catch( error => {
                        console.log(error);
-                       if( error.response.status === 400){
-                           alert(error)
+                       alert(error.response.data);
+                       /*if(error.response.status === 400){
                        }else{
                            alert("Error de servidor")
-                       }
+                       }*/
                    });
             },
             edit() {

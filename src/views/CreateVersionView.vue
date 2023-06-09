@@ -68,9 +68,9 @@ export default {
 				}).catch( error => {
 					console.log(error);
 					if( error.response.status === 400){
-						alert(error)
+						alert(error.response.data)
 					}else{
-						alert("Error de servidor " + error)
+						alert("Error de servidor " + error.response.data)
 					}
 				});
 		}
